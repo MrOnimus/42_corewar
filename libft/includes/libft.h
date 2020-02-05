@@ -1,13 +1,13 @@
 /* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   libft.h                                            :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: immn <immn@student.42.fr>                  +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/29 18:24:30 by kgarth-o          #+#    #+#             */
-/*   Updated: 2020/02/03 16:52:28 by immn             ###   ########.fr       */
-/*                                                                            */
+/*																			*/
+/*														:::	  ::::::::   */
+/*   libft.h											:+:	  :+:	:+:   */
+/*													+:+ +:+		 +:+	 */
+/*   By: immn <immn@student.42.fr>				  +#+  +:+	   +#+		*/
+/*												+#+#+#+#+#+   +#+		   */
+/*   Created: 2019/10/29 18:24:30 by kgarth-o		  #+#	#+#			 */
+/*   Updated: 2020/02/03 16:52:28 by immn			 ###   ########.fr	   */
+/*																			*/
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
@@ -19,6 +19,8 @@
 # include <stdlib.h>
 # include <fcntl.h>
 # include <unistd.h>
+# include "ft_printf.h"
+# include "get_next_line.h"
 
 /*
 ** COLORS
@@ -104,7 +106,6 @@ char				*ft_nchrjoinstr(char *str, char c, int n);
 
 void				ft_print_array(int *array, int len);
 void				ft_bubble_sort(int *arr, int len);
-size_t					ft_arrlen(int *array);
 /*
 ** LISTS
 */
