@@ -6,13 +6,13 @@
 /*   By: immn <immn@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/08 23:04:25 by immn              #+#    #+#             */
-/*   Updated: 2020/02/08 23:08:04 by immn             ###   ########.fr       */
+/*   Updated: 2020/02/08 23:20:54 by immn             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
 
-int					read_code(int fd)//, t_out *out)
+int					read_code(int fd, t_out *out)
 {
 	t_tokens	*read;
 	// t_mark		*mark;
