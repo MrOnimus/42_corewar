@@ -52,6 +52,6 @@ void			say_error(char *fname);
 void			cook_raw(int fd/*, t_out **out, char *filename*/);//translation
 void			read_n_c(int fd, t_out *out);//get_name_n_comment
 void			del_output(t_out **out);
-int				read_code(int fd);//, t_out *out);
+int				read_code(int fd, t_out *out);
 
 #endif
