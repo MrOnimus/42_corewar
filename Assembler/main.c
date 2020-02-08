@@ -31,9 +31,10 @@ int			main(int ac, char **av)
 		}
 		else
 		{
-			//cook_raw(fd, &out, file_name);
+			cook_raw(fd/*, &out, file_name*/);
 			close(fd);
 		}
+		// printf("%d\n", g_error.id);
 		if (g_error.id)
 			say_error(file_name);
 		else

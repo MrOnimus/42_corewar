@@ -49,6 +49,9 @@ extern t_error			g_error;
 char			*correct_name(char *name);
 void			say_okey(char *fname);
 void			say_error(char *fname);
+void			cook_raw(int fd/*, t_out **out, char *filename*/);//translation
+void			read_n_c(int fd, t_out *out);//get_name_n_comment
+
 
 // char			parse_args(char *line, t_tokens *new_line);
 // char			check_arg(char **arg, char *type, int *value);
