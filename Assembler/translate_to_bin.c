@@ -6,7 +6,7 @@
 /*   By: immn <immn@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/05 13:39:54 by immn              #+#    #+#             */
-/*   Updated: 2020/02/06 13:53:10 by immn             ###   ########.fr       */
+/*   Updated: 2020/02/08 21:09:00 by immn             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void		cook_raw(int fd/*, t_out **out, char *filename*/)//translation
 	read_n_c(fd, output);
 	if (g_error.id)
 	{
-	//	del_output(&output);
+		//del_output(&output);
 		return ;
 	}
 	// if (read_code(fd, output))

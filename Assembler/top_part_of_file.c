@@ -6,7 +6,7 @@
 /*   By: immn <immn@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/06 13:51:11 by immn              #+#    #+#             */
-/*   Updated: 2020/02/08 20:25:07 by immn             ###   ########.fr       */
+/*   Updated: 2020/02/08 21:55:41 by immn             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int		empty(char *s, size_t n)//Эту нужно в либу закинуть
 	return (1);
 }
 
-static char	*give_full_name(int fd, size_t max_length, char *start, char *tmp)//Эту желательно разбить или сделать проще
+static char	*give_full_name(int fd, size_t max_length, char *start, char *tmp)//Эту желательно разбить или сделать проще//save_that_attr
 {
 	char	*end;
 	char	*str;
@@ -64,7 +64,7 @@ static char	*give_full_name(int fd, size_t max_length, char *start, char *tmp)//
 	return (NULL);
 }
 
-static void	read_name(int fd, t_out *out, char *line)
+static void	read_name(int fd, t_out *out, char *line)//read_name_n_com
 {
 	char	*start;
 	char	*name;
@@ -141,6 +141,8 @@ void		read_n_c(int fd, t_out *out)//get_name_n_comment
 
 			Еще надо, чтобы писало не о первой попавшейся ошибке, а об обеих
 			Типа если дублируется и имя и коммент, то чтобы писало и о первом и о втором
+
+			Еще в строке с именем\комментом если написать что-то после кавычек - не воспримет как ошибку. Тоже надо исправить
 		*/
 		if (line && !ft_strncmp(COMMENT_CMD_STRING, line, c_len))
 		{
