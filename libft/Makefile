@@ -58,7 +58,7 @@ _STR_FS			=	ft_strnstr.c ft_strcmp.c ft_strncmp.c ft_strnew.c ft_strdel.c \
 					ft_word_count.c ft_count_words.c ft_strlen_chr.c \
 					ft_strupcase.c ft_strlowcase.c ft_how_mutch_search_in_str.c \
 					ft_strclen.c ft_strjoin_flagclear.c ft_strjoin_po.c ft_strnchr.c \
-					ft_strrev.c
+					ft_strrev.c del_str.c
 
 _STACK_FS		=	ft_free_stack.c ft_pop_stack.c ft_print_stack.c ft_stack_isempty.c \
 					ft_push_stack.c
