@@ -1,13 +1,13 @@
 # **************************************************************************** #
-#                                                                              #
-#                                                         :::      ::::::::    #
-#    Makefile                                           :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: immn <immn@student.42.fr>                  +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2019/10/29 12:46:09 by kgarth-o          #+#    #+#              #
-#    Updated: 2020/02/03 16:22:02 by immn             ###   ########.fr        #
-#                                                                              #
+#																			  #
+#														 :::	  ::::::::	#
+#	Makefile										   :+:	  :+:	:+:	#
+#													 +:+ +:+		 +:+	  #
+#	By: immn <immn@student.42.fr>				  +#+  +:+	   +#+		 #
+#												 +#+#+#+#+#+   +#+			#
+#	Created: 2019/10/29 12:46:09 by kgarth-o		  #+#	#+#			  #
+#	Updated: 2020/02/03 16:22:02 by immn			 ###   ########.fr		#
+#																			  #
 # **************************************************************************** #
 
 NAME			= 	libft.a
@@ -23,7 +23,7 @@ _MEM_FS			=	ft_memchr.c ft_memccpy.c ft_memmove.c ft_memcpy.c ft_realloc.c\
 					ft_memcmp.c ft_bzero.c ft_memalloc.c ft_memdel.c ft_memset.c\
 					ft_free_darray.c ft_swap.c ft_nchrjoinstr.c
 
-_ARR_FS			=	ft_print_arr.c ft_bubble_sort.c ft_free_mas_char.c ft_arrlen.c
+_ARR_FS			=	ft_print_arr.c ft_bubble_sort.c ft_free_mas_char.c
 
 _IO_FS			= 	ft_putendl.c ft_putnbr.c ft_putchar_fd.c ft_putstr_fd.c \
 					ft_putendl_fd.c ft_putnbr_fd.c ft_putwchar.c ft_putchar.c \
@@ -58,7 +58,7 @@ _STR_FS			=	ft_strnstr.c ft_strcmp.c ft_strncmp.c ft_strnew.c ft_strdel.c \
 					ft_word_count.c ft_count_words.c ft_strlen_chr.c \
 					ft_strupcase.c ft_strlowcase.c ft_how_mutch_search_in_str.c \
 					ft_strclen.c ft_strjoin_flagclear.c ft_strjoin_po.c ft_strnchr.c \
-					ft_strrev.c
+					ft_strrev.c del_str.c
 
 _STACK_FS		=	ft_free_stack.c ft_pop_stack.c ft_print_stack.c ft_stack_isempty.c \
 					ft_push_stack.c
