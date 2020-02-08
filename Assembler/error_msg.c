@@ -6,11 +6,13 @@
 /*   By: immn <immn@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/02 14:21:18 by immn              #+#    #+#             */
-/*   Updated: 2020/02/06 13:42:05 by immn             ###   ########.fr       */
+/*   Updated: 2020/02/08 23:01:10 by immn             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
+
+t_error		g_error = {NULL, 0, NULL};
 
 static char	*g_msg[21] = { //g_err_handler  -  need change msgs
 	"\033[31m; can't allocate memory\n\033[0m",
@@ -35,8 +37,6 @@ static char	*g_msg[21] = { //g_err_handler  -  need change msgs
 	"\033[31m champion has no command \n\033[0m",
 	"\033[31m; can't allocate memory\n\033[0m"
  };
-
-t_error		g_error = {NULL, 0, NULL};
 
 void		say_error(char *fname)//fail_msg
 {
