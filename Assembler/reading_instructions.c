@@ -6,7 +6,7 @@
 /*   By: immn <immn@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/08 23:04:25 by immn              #+#    #+#             */
-/*   Updated: 2020/02/10 15:50:38 by immn             ###   ########.fr       */
+/*   Updated: 2020/02/10 16:02:27 by immn             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,14 +52,10 @@ t_tokens	*check_line(char *line)//parse_line
 	if (feedback == 1)
 	{
 		new->mark = ft_strsub(line, 0, pos);
-		//printf("%s\n", new->mark);
 		line += pos + 1;
 		skip_emptyness(&line);
 		if ((feedback = find_sep(line, &pos)) == 0)//for lable
-		{
-			//printf("1111 = %s\n", line);
 			return (new);
-		}
 		if (feedback != 2)
 			return (free_return(new));
 	}
@@ -80,18 +76,18 @@ static t_tokens	*validate(int fd)//validate_n_build_list
 	curr = NULL;
 	while (get_next_line(fd, &line))
 	{
-		if ((new = check_line(line)))//					need to testing check_line!!!!
-									//					МОжно просто смотреть по кодам ошибки по ходу программы - и пытаться их провоцировать
-
-
-/************endwhile:			;     lkjrflakwjrglkaejrg   - Вот такая строчка выдает ошибку
- * 							То есть альтернативный комментарий после лейбла не отрабатыват
-*/
-
-
-
-	// 		add_tok(&toks, &curr, new);
+		if ((new = check_line(line)))
+		/**
+		 * 1. Нужно протетировать функцию check_line
+		 * 		Можно просто смотреть по кодам ошибки по ходу программы и пытаться их провоцировать
+		 * 2. Строчка вида:
+		 * 	name_lable:			;Alternative comment
+		 * 	выдает ошибку.
+		 * 	В остальных местах альтернативный комментарий отрабатывает.
+		 * 
+		**/
 		{
+			//add_tok(&toks, &curr, new);
 			//printf("kek\n");
 		}
 	// 	if (g_error.id && (g_error.str_er = line))
