@@ -64,6 +64,8 @@ void			*free_return(t_tokens *new);
 void			rebase_args(t_tokens *new, int n_arg, char **args);
 char			parse_args(char *line, t_tokens *new);//parse_arguments
 char			label_correct(char *l);
+void			add_tok(t_tokens **toks, t_tokens **curr, t_tokens *new);
+void			del_tokens(t_tokens *me);
 
 
 

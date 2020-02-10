@@ -6,7 +6,7 @@
 /*   By: immn <immn@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/08 23:04:25 by immn              #+#    #+#             */
-/*   Updated: 2020/02/10 16:02:27 by immn             ###   ########.fr       */
+/*   Updated: 2020/02/10 16:11:42 by immn             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,27 +81,27 @@ static t_tokens	*validate(int fd)//validate_n_build_list
 		 * 1. Нужно протетировать функцию check_line
 		 * 		Можно просто смотреть по кодам ошибки по ходу программы и пытаться их провоцировать
 		 * 2. Строчка вида:
-		 * 	name_lable:			;Alternative comment
+		 * 	name_lable:			; Alternative comment with space after ";"
 		 * 	выдает ошибку.
 		 * 	В остальных местах альтернативный комментарий отрабатывает.
 		 * 
 		**/
 		{
-			//add_tok(&toks, &curr, new);
+			add_tok(&toks, &curr, new);
 			//printf("kek\n");
 		}
-	// 	if (g_error.id && (g_error.str_er = line))
-	// 	{
-	// 		line = NULL;
-	// 		del_tokens(toks);
-	// 		return (NULL);
-	// 	}
+		if (g_error.id && (g_error.str_er = line))
+		{
+			line = NULL;
+			del_tokens(toks);
+			return (NULL);
+		}
 		ft_strdel(&line);
 	}
-	// if (curr)
-	// 	curr->next = NULL;
-	// if (!toks && (g_error.id = 19))
-	// 	return (NULL);
+	if (curr)
+		curr->next = NULL;
+	if (!toks && (g_error.id = 19))
+		return (NULL);
 	return (toks);
 }
 
