@@ -1,29 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strtrim.c                                       :+:      :+:    :+:   */
+/*   s_tokens.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: immn <immn@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/02/03 18:33:43 by kgarth-o          #+#    #+#             */
-/*   Updated: 2020/02/09 13:53:24 by immn             ###   ########.fr       */
+/*   Created: 2020/02/09 14:57:29 by immn              #+#    #+#             */
+/*   Updated: 2020/02/09 19:46:35 by immn             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "asm.h"
 
-char	*ft_strtrim(char const *s)
+void	del_tokens(t_tokens *me)
 {
-	char const *s_end;
+	t_tokens	*tmp;
 
-	if (s == NULL)
-		return (NULL);
-	while (*s == ' ' || *s == '\t' || *s == '\n')
-		s++;
-	if (*s == '\0')
-		return (ft_strnew(0));
-	s_end = s + ft_strlen(s) - 1;
-	while (*s_end == ' ' || *s_end == '\t' || *s_end == '\n')
-		s_end--;
-	return (ft_strsub(s, 0, s_end - s + 1));
+	while (me)
+	{
+		tmp = me->next;
+		free(me->mark);
+		free(me->a1);
+		free(me->a2);
+		free(me->a3);
+		free(me);
+		me = tmp;
+	}
+}
+
+void		*free_return(t_tokens *new)
+{
+	del_tokens(new);
+	return (NULL);
 }

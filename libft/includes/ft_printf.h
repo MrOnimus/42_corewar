@@ -35,15 +35,15 @@
 
 typedef struct	s_spec
 {
-	char	spec;
-	int		flag[5];
-	int		prec;
-	int		len[4];
-	int		width;
-	char	*pos;
-	char	*cont;
-	int		del;
-	int		neg;
+	char		spec;
+	int			flag[5];
+	int			prec;
+	int			len[4];
+	int			width;
+	char		*pos;
+	char		*cont;
+	int			del;
+	int			neg;
 }				t_spec;
 
 void			prec(t_spec *spec);

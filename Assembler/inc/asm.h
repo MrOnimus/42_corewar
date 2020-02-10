@@ -53,5 +53,19 @@ void			cook_raw(int fd/*, t_out **out, char *filename*/);//translation
 void			read_n_c(int fd, t_out *out);//get_name_n_comment
 void			del_output(t_out **out);
 int				read_code(int fd, t_out *out);
+void			skip_emptyness(char **p);
+char			find_sep(char *l, size_t *p);
+void			check_for_comment(char *line);
+char			del_2mas(char **me);//free_two_dim_array
+char			check_arg(char **arg, char *type, int *value);
+t_op			*check_command(char *l, size_t pos);//cmp_commands
+t_tokens		*check_line(char *line);//parse_line
+void			*free_return(t_tokens *new);
+void			rebase_args(t_tokens *new, int n_arg, char **args);
+char			parse_args(char *line, t_tokens *new);//parse_arguments
+char			label_correct(char *l);
+
+
+
 
 #endif
