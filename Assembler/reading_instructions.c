@@ -6,7 +6,7 @@
 /*   By: immn <immn@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/08 23:04:25 by immn              #+#    #+#             */
-/*   Updated: 2020/02/10 16:11:42 by immn             ###   ########.fr       */
+/*   Updated: 2020/02/17 10:07:32 by immn             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,29 +102,30 @@ static t_tokens	*validate(int fd)//validate_n_build_list
 		curr->next = NULL;
 	if (!toks && (g_error.id = 19))
 		return (NULL);
+	//Надо бы попринтить токены, чтобы быть уверенным.
 	return (toks);
 }
 
 int					read_code(int fd, t_out *out)//read_instructions
 {
 	t_tokens	*read;
-	// t_mark		*mark;
-	// char		status;
+	char		status;
+	t_mark		*mark;
 
-	if (!(read = validate(fd)))
+	if (!(read = validate(fd)))//token chain
 		return (1);
-	// status = 0;
-	// mark = fill_mark(read, status);
-	// if (status == 1)
-	// {
-	// 	del_marks(mark);
-	// 	del_tokens(read);
-	// 	return (1);
-	// }
-	// read = del_empty(read);
-	// out->code_size_int = replace_marks(read, mark);
+	status = 0;
+	mark = fill_mark(read, status);
+	if (status == 1)//Эта часть кода не отработает. Нцужно передавать указатель - Передалать надо бэ
+	{
+		del_marks(mark);
+		del_tokens(read);
+		return (1);
+	}
+	read = del_empty(read);
+	//out->code_size_int = replace_marks(read, mark);
 	// code_to_bytes(read, out);
 	// out->c_exist = 1;
 	// del_tokens(read);
-	// return (0);
+	return (0);
 }

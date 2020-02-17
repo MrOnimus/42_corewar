@@ -6,7 +6,7 @@
 /*   By: immn <immn@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/09 14:57:29 by immn              #+#    #+#             */
-/*   Updated: 2020/02/10 16:06:51 by immn             ###   ########.fr       */
+/*   Updated: 2020/02/17 10:06:13 by immn             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,4 +46,30 @@ void		add_tok(t_tokens **toks, t_tokens **curr, t_tokens *new)
 		(*curr)->next = new;
 		*curr = (*curr)->next;
 	}
+}
+
+t_tokens		*del_empty(t_tokens *read)
+{
+	t_tokens	*tmp;
+	t_tokens	*new;
+
+	new = read;
+	while (read && read->next)
+	{
+		if (!(read->next->command))
+		{
+			tmp = read->next;
+			read->next = read->next->next;
+			free(tmp);
+		}
+		else
+			read = read->next;
+	}
+	if (!(new->command))
+	{
+		tmp = new->next;
+		free(new);
+		return (tmp);
+	}
+	return (new);
 }

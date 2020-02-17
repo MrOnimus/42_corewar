@@ -66,7 +66,10 @@ char			parse_args(char *line, t_tokens *new);//parse_arguments
 char			label_correct(char *l);
 void			add_tok(t_tokens **toks, t_tokens **curr, t_tokens *new);
 void			del_tokens(t_tokens *me);
-
+t_mark			*fill_mark(t_tokens *read, char status);
+t_tokens		*del_empty(t_tokens *read);
+void			del_marks(t_mark *me);
+size_t			weight(t_tokens *me);
 
 
 
