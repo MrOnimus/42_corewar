@@ -6,7 +6,7 @@
 #    By: immn <immn@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/02/04 13:59:19 by immn              #+#    #+#              #
-#    Updated: 2020/02/17 10:01:41 by immn             ###   ########.fr        #
+#    Updated: 2020/02/20 16:33:59 by immn             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,8 @@ INC		= -I../libft/includes/	-I./inc/
 SRC		=	main.c error_msg.c		first_validation.c	translate_to_bin.c		\
 			top_part_of_file.c		s_out.c				reading_instructions.c	\
 			reading_instruments.c	global_variables.c	parse_args.c			\
-			s_tokens.c				s_mark.c			struct_free.c
+			s_tokens.c				s_mark.c			struct_free.c			\
+			translate_to_bytes.c
 			
 
 OBJ_DIR = obj/

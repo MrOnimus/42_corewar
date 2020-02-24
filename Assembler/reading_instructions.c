@@ -6,7 +6,7 @@
 /*   By: immn <immn@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/08 23:04:25 by immn              #+#    #+#             */
-/*   Updated: 2020/02/17 10:07:32 by immn             ###   ########.fr       */
+/*   Updated: 2020/02/24 16:48:53 by immn             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,10 +122,10 @@ int					read_code(int fd, t_out *out)//read_instructions
 		del_tokens(read);
 		return (1);
 	}
-	read = del_empty(read);
-	//out->code_size_int = replace_marks(read, mark);
-	// code_to_bytes(read, out);
-	// out->c_exist = 1;
-	// del_tokens(read);
+	read = del_empty(read);//Получили лист с валидными командами и их параметрами
+	out->code_size_int = replace_marks(read, mark);
+	code_to_bytes(read, out);//Эту функцию я бы вытащил отдельно
+	out->c_exist = 1;
+	del_tokens(read);
 	return (0);
 }

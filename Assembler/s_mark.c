@@ -6,13 +6,45 @@
 /*   By: immn <immn@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/10 16:17:44 by immn              #+#    #+#             */
-/*   Updated: 2020/02/17 10:02:14 by immn             ###   ########.fr       */
+/*   Updated: 2020/02/20 16:13:20 by immn             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
 
-static int			calc_mark(char *name, size_t n, t_mark *marks)
+size_t		replace_marks(t_tokens *read, t_mark *mark)//move_marks
+{
+	size_t	n;
+
+	n = 0;
+	while (read)
+	{
+		if (!read->a1 && !read->a2 && !read->a3)
+		{
+			//printf("1 - %s\n", read->command->cmd);
+			n += weight(read);
+		}
+		else
+		{
+			//printf("2 - %s\n", read->command->cmd);
+			if (read->a1)
+				read->values[0] = calc_mark(read->a1, mark) - n;
+			if (read->a2)
+				read->values[1] = calc_mark(read->a2, mark) - n;
+			if (read->a3)
+				read->values[2] = calc_mark(read->a3, mark) - n;
+			n += weight(read);
+			ft_strdel(&read->a1);
+			ft_strdel(&read->a2);
+			ft_strdel(&read->a3);
+		}
+		read = read->next;
+	}
+	del_marks(mark);
+	return (n);
+}
+
+int			calc_mark(char *name, t_mark *marks)//mark_position
 {
 	int	pos;
 
@@ -32,35 +64,7 @@ static int			calc_mark(char *name, size_t n, t_mark *marks)
 		free(g_error.str_er);
 		g_error.str_er = ft_strdup(name);
 	}
-	return (pos - (int)n);
-}
-
-static size_t		replace_marks(t_tokens *read, t_mark *mark)
-{
-	size_t	n;
-
-	n = 0;
-	while (read)
-	{
-		if (!read->a1 && !read->a2 && !read->a3)
-			n += weight(read);
-		else
-		{
-			if (read->a1)
-				read->values[0] = calc_mark(read->a1, n, mark);
-			if (read->a2)
-				read->values[1] = calc_mark(read->a2, n, mark);
-			if (read->a3)
-				read->values[2] = calc_mark(read->a3, n, mark);
-			n += weight(read);
-			ft_strdel(&read->a1);
-			ft_strdel(&read->a2);
-			ft_strdel(&read->a3);
-		}
-		read = read->next;
-	}
-	del_marks(mark);
-	return (n);
+	return (pos);
 }
 
 static size_t	weight_arg(char type, char dir_size)

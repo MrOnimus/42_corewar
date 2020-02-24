@@ -99,6 +99,7 @@ void				ft_swap(int *a, int *b);
 char				*ft_chjoinstr(char c, char *str);
 void				ft_free_mas_char(char ***tab);
 char				*ft_nchrjoinstr(char *str, char c, int n);
+void				*ft_memcpy_rev(void *dst, const void *src, size_t n);
 
 /*
 ** ARR

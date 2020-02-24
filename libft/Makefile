@@ -23,7 +23,7 @@ _MEM_FS			=	ft_memchr.c				ft_memccpy.c					ft_memmove.c			\
 					ft_memcpy.c				ft_realloc.c					ft_memcmp.c				\
 					ft_bzero.c				ft_memalloc.c					ft_memdel.c 			\
 					ft_memset.c				ft_free_darray.c				ft_swap.c				\
-					ft_nchrjoinstr.c
+					ft_nchrjoinstr.c		ft_memcpy_rev.c
 
 _ARR_FS			=	ft_print_arr.c			ft_bubble_sort.c				ft_free_mas_char.c
 
