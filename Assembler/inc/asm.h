@@ -46,12 +46,34 @@ typedef	struct	s_m
 	size_t		size;
 }				t_mark;
 
+t_mark			*fill_mark(t_tokens *read, char status);
+t_tokens		*del_empty(t_tokens *read);
+t_tokens		*check_line(char *line);//parse_line
+void			*free_return(t_tokens *new);
 char			*correct_name(char *name);
+t_op			*check_command(char *l, size_t pos);//cmp_commands
+size_t			weight(t_tokens *me);
+void			add_tok(t_tokens **toks, t_tokens **curr, t_tokens *new);
+char			del_2mas(char **me);//free_two_dim_array
 void			say_okey(char *fname);
-void			say_error(char *fname);
-void			cook_raw(int fd/*, t_out **out, char *filename*/);//translation
 void			read_n_c(int fd, t_out *out);//get_name_n_comment
-void			del_output(t_out **out);
+char			find_sep(char *l, size_t *p);
+void			cook_raw(int fd, t_out **out, char *filename);//translation
+void			del_marks(t_mark *me);
+void			say_error(char *fname);
 int				read_code(int fd, t_out *out);
+char			check_arg(char **arg, char *type, int *value);
+int				calc_mark(char *name, t_mark *marks);
+void			del_output(t_out **out);
+void			del_tokens(t_tokens *me);
+char			parse_args(char *line, t_tokens *new);//parse_arguments
+void			rebase_args(t_tokens *new, int n_arg, char **args);
+char			label_correct(char *l);
+size_t			replace_marks(t_tokens *read, t_mark *mark);
+void			skip_emptyness(char **p);
+void			check_for_comment(char *line);
+void			code_to_bytes(t_tokens *tokens, t_out *out);
+
+
 
 #endif

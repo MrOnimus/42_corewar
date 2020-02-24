@@ -17,55 +17,69 @@ OBJD			=	./objs/
 FLAGS			=	-Wall -Wextra -Werror -O3 -Ofast
 INCLUDES_D		=	includes/
 
-_INCLUDES		=	libft.h get_next_line.h ft_printf.h
+_INCLUDES		=	libft.h					get_next_line.h					ft_printf.h
 
-_MEM_FS			=	ft_memchr.c ft_memccpy.c ft_memmove.c ft_memcpy.c ft_realloc.c\
-					ft_memcmp.c ft_bzero.c ft_memalloc.c ft_memdel.c ft_memset.c\
-					ft_free_darray.c ft_swap.c ft_nchrjoinstr.c
+_MEM_FS			=	ft_memchr.c				ft_memccpy.c					ft_memmove.c			\
+					ft_memcpy.c				ft_realloc.c					ft_memcmp.c				\
+					ft_bzero.c				ft_memalloc.c					ft_memdel.c 			\
+					ft_memset.c				ft_free_darray.c				ft_swap.c				\
+					ft_nchrjoinstr.c		ft_memcpy_rev.c
 
-_ARR_FS			=	ft_print_arr.c ft_bubble_sort.c ft_free_mas_char.c
+_ARR_FS			=	ft_print_arr.c			ft_bubble_sort.c				ft_free_mas_char.c
 
-_IO_FS			= 	ft_putendl.c ft_putnbr.c ft_putchar_fd.c ft_putstr_fd.c \
-					ft_putendl_fd.c ft_putnbr_fd.c ft_putwchar.c ft_putchar.c \
-					ft_putwchar_fd.c ft_putstr.c get_next_line.c \
-					ft_colorstr.c ft_colorstr_nl.c ft_colorstr_fd.c ft_colorstr_nl_fd.c \
-					ft_putstr_chr.c ft_print_spaces.c ft_putstr_wh.c
+_IO_FS			= 	ft_putendl.c			ft_putnbr.c						ft_putchar_fd.c			\
+					ft_putstr_fd.c 			ft_putendl_fd.c					ft_putnbr_fd.c			\
+					ft_putwchar.c			ft_putchar.c					ft_putwchar_fd.c		\
+					ft_putstr.c				get_next_line.c					ft_colorstr.c			\
+					ft_colorstr_nl.c		ft_colorstr_fd.c				ft_colorstr_nl_fd.c		\
+					ft_putstr_chr.c			ft_print_spaces.c				ft_putstr_wh.c
 
-_TYPES_FS		=	ft_atoi.c ft_isblank.c ft_islower.c ft_isspace.c ft_isupper.c \
-					ft_isxdigit.c ft_isgraph.c ft_iscntrl.c ft_strisprintable.c \
-					ft_itoa.c ft_isalpha.c ft_isdigit.c  ft_tolower.c \
-					ft_isalnum.c ft_isascii.c ft_isprint.c ft_toupper.c \
-					ft_atol.c ft_min.c ft_max.c ft_itoa_base.c ft_itoa_bin.c \
-					ft_itoa_double.c ft_itoa_ldouble.c ft_itoa_pointer.c ft_itoa_roundd.c\
-					ft_itoa_u.c ft_strisnumeric.c ft_strislowercase.c \
-					ft_strisalpha.c ft_checklong.c ft_chjoinstr.c ft_countchars.c \
-					ft_intclear.c ft_ltoa_base.c ft_nbrlen_base.c
+_TYPES_FS		=	ft_atoi.c				ft_isblank.c					ft_islower.c			\
+					ft_isspace.c			ft_isupper.c					ft_isxdigit.c			\
+					ft_isgraph.c			ft_iscntrl.c					ft_strisprintable.c		\
+					ft_itoa.c				ft_isalpha.c					ft_isdigit.c			\
+					ft_tolower.c			ft_isalnum.c					ft_isascii.c			\
+					ft_isprint.c			ft_toupper.c					ft_atol.c				\
+					ft_min.c				ft_max.c						ft_itoa_base.c			\
+					ft_itoa_bin.c			ft_itoa_double.c				ft_itoa_ldouble.c		\
+					ft_itoa_pointer.c		ft_itoa_roundd.c				ft_itoa_u.c				\
+					ft_strisnumeric.c		ft_strislowercase.c				ft_strisalpha.c			\
+					ft_checklong.c			ft_chjoinstr.c					ft_countchars.c			\
+					ft_intclear.c			ft_ltoa_base.c					ft_nbrlen_base.c		
 
-_LIST_FS		=	ft_lstiter.c ft_lstmap.c ft_lstdelone.c ft_lstdel.c ft_lstadd.c \
-					ft_lstnew.c ft_lstcount.c ft_lstlen.c ft_lstrev.c ft_putlst.c
+_LIST_FS		=	ft_lstiter.c			ft_lstmap.c						ft_lstdelone.c			\
+					ft_lstdel.c				ft_lstadd.c						ft_lstnew.c				\
+					ft_lstcount.c			ft_lstlen.c						ft_lstrev.c				\
+					ft_putlst.c
 
-_BTREE_FS		=	ft_create_node.c ft_delete_node.c ft_insert_data.c \
-					ft_search_data.c ft_tree_apply_infix.c \
-					ft_tree_apply_postfix.c ft_tree_apply_infix.c \
+_BTREE_FS		=	ft_create_node.c		ft_delete_node.c				ft_insert_data.c		\
+					ft_search_data.c		ft_tree_apply_infix.c			ft_tree_apply_postfix.c	\
+					ft_tree_apply_infix.c \
 
-_STR_FS			=	ft_strnstr.c ft_strcmp.c ft_strncmp.c ft_strnew.c ft_strdel.c \
-					ft_strclr.c ft_striter.c ft_striteri.c ft_strmap.c ft_strmapi.c \
-					ft_strequ.c ft_strnequ.c ft_strsub.c ft_strjoin.c ft_strtrim.c \
-					ft_strsplit.c ft_strlen.c \
-					ft_strjoin_free.c ft_strjoinc_free.c ft_strdup.c ft_strcpy.c \
-					ft_strncpy.c ft_strcat.c ft_strncat.c ft_strlcat.c \
-					ft_strchr.c ft_strrchr.c ft_strstr.c ft_strchr_by_index.c\
-					ft_word_count.c ft_count_words.c ft_strlen_chr.c \
-					ft_strupcase.c ft_strlowcase.c ft_how_mutch_search_in_str.c \
-					ft_strclen.c ft_strjoin_flagclear.c ft_strjoin_po.c ft_strnchr.c \
-					ft_strrev.c del_str.c
+_STR_FS			=	ft_strnstr.c			ft_strcmp.c						ft_strncmp.c			\
+					ft_strnew.c				ft_strdel.c						ft_strclr.c				\
+					ft_striter.c			ft_striteri.c					ft_strmap.c				\
+					ft_strmapi.c			ft_strequ.c						ft_strnequ.c			\
+					ft_strsub.c				ft_strjoin.c					ft_strtrim.c			\
+					ft_strsplit.c			ft_strlen.c						ft_strjoin_free.c		\
+					ft_strjoinc_free.c		ft_strdup.c						ft_strcpy.c				\
+					ft_strncpy.c			ft_strcat.c						ft_strncat.c			\
+					ft_strlcat.c			ft_strchr.c						ft_strrchr.c			\
+					ft_strstr.c				ft_strchr_by_index.c			ft_word_count.c			\
+					ft_count_words.c		ft_strlen_chr.c					ft_strupcase.c			\
+					ft_strlowcase.c			ft_how_mutch_search_in_str.c 	ft_strclen.c			\
+					ft_strjoin_flagclear.c	ft_strjoin_po.c					ft_strnchr.c			\
+					ft_strrev.c				del_str.c						ft_res_is_true.c		\
+					ft_is_num.c
 
-_STACK_FS		=	ft_free_stack.c ft_pop_stack.c ft_print_stack.c ft_stack_isempty.c \
-					ft_push_stack.c
+_STACK_FS		=	ft_free_stack.c			ft_pop_stack.c					ft_print_stack.c		\
+					ft_stack_isempty.c 		ft_push_stack.c
 
 _BITS_FS		=	ft_reverse_bits.c
 
-_PRINT_FS		=	double.c ft_printf.c init.c io.c num.c precision.c str.c spec.c
+_PRINT_FS		=	double.c				ft_printf.c						init.c					\
+					io.c					num.c							precision.c				\
+					str.c					spec.c
 
 _MATH_FS		=	ft_abs.c
 

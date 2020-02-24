@@ -16,8 +16,9 @@ int			main(int ac, char **av)
 {
 	int		fd;
 	char	*file_name;
-	//t_out	*out;
+	t_out	*out;
 
+	file_name = NULL;
 	while (--ac)
 	{
 		g_error.filename = *(++av);
@@ -31,10 +32,9 @@ int			main(int ac, char **av)
 		}
 		else
 		{
-			cook_raw(fd/*, &out, file_name*/);
+			cook_raw(fd, &out, file_name);
 			close(fd);
 		}
-		// printf("%d\n", g_error.id);
 		if (g_error.id)
 			say_error(file_name);
 		else

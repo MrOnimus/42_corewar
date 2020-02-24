@@ -38,7 +38,7 @@
 #define LABEL_CHAR				':'
 #define DIRECT_CHAR				'%'
 #define SEPARATOR_CHAR			','
-# define ALT_COMMENT_CHAR	   ';'
+#define ALT_COMMENT_CHAR		';'
 
 #define LABEL_CHARS				"abcdefghijklmnopqrstuvwxyz_0123456789"
 
@@ -51,6 +51,8 @@
 #define CYCLE_DELTA				50
 #define NBR_LIVE				21
 #define MAX_CHECKS				10
+
+#define NUMBER_OF_COMMAND		17
 
 /*
 **
@@ -69,7 +71,10 @@ typedef char	t_arg_type;
 
 # define PROG_NAME_LENGTH		(128)
 # define COMMENT_LENGTH			(2048)
-# define COREWAR_EXEC_MAGIC		0xea83f3
+# define COREWAR_EXEC_MAGIC		0xea83f3//from subj
+# define IIOOOOOO				192
+# define OOIIOOOO				48
+# define OOOOIIOO				12
 
 // typedef struct		s_header
 // {
@@ -82,7 +87,7 @@ typedef char	t_arg_type;
 typedef struct		s_op
 {
 	unsigned char	cmd[6];
-	unsigned char	arg_q;			  //rename
+	unsigned char	arg_q;			  //rename args_quantity
 	unsigned char	arg_type[3];
 	unsigned char	opcode;
 	unsigned int	cycles;

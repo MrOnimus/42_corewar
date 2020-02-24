@@ -1,20 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strnequ.c                                       :+:      :+:    :+:   */
+/*   ft_res_is_true.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: immn <immn@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/02/03 16:54:24 by kgarth-o          #+#    #+#             */
-/*   Updated: 2020/02/17 10:16:59 by immn             ###   ########.fr       */
+/*   Created: 2020/02/09 14:09:59 by immn              #+#    #+#             */
+/*   Updated: 2020/02/09 14:10:01 by immn             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		ft_strnequ(char const *s1, char const *s2, size_t n)
+int	ft_is_ok(char *s, int (*f)(int))//ft_res_is_true
 {
-	if (!s1 || !s2)
+	if (!s)
 		return (0);
-	return (ft_strncmp(s1, s2, n) ? 0 : 1);
+	while (*s && f(*s))
+		++s;
+	return (*s ? 0 : 1);
 }

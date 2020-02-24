@@ -5,7 +5,6 @@
 
 .comment "Ha,Ha,Ha,stayiiiiin' aliiiiiiiiiive"s
 
-
 sti	r1,%:live,%1			#change live by the right value
 sti	r1,%:live2,%1			#change live by the right value
 ld	%1,r3
@@ -21,7 +20,7 @@ fork	%:forks
 ld	%0,r4			#carry = 1
 zjmp	%:forks
 #EndWhile
-endwhile:
+endwhile:			# asdaef
 ld	%0,r4			#carry = 1
 
 live:

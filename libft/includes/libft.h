@@ -99,6 +99,7 @@ void				ft_swap(int *a, int *b);
 char				*ft_chjoinstr(char c, char *str);
 void				ft_free_mas_char(char ***tab);
 char				*ft_nchrjoinstr(char *str, char c, int n);
+void				*ft_memcpy_rev(void *dst, const void *src, size_t n);
 
 /*
 ** ARR
@@ -218,7 +219,6 @@ char				*ft_strupcase(char *str);
 int					ft_strchr_by_index(char *str, int c);
 int					ft_word_count(char const *s, char c);
 int					ft_count_words(char **arr);
-
 int					ft_memcmp(const void *str1, const void *str2, size_t n);
 void				*ft_memchr (const void *arr, int c, size_t n);
 void				*ft_memmove (void *destination, const void *source,
@@ -233,6 +233,9 @@ char				*ft_strjoin_flag(char *s1, int free1, char *s2, int free2);
 char				*ft_strjoin_po(char const *s1, char const *s2);
 int					ft_strnchr(const char *s, char ch, int n);
 char				ft_strrev(char *a);
+int					ft_is_ok(char *s, int (*f)(int));//ft_res_is_true
+int					is_number(char *s);//ft_is_num
+
 
 /*
 ** TOIS
