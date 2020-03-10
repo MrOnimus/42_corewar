@@ -70,7 +70,7 @@ _STR_FS			=	ft_strnstr.c			ft_strcmp.c						ft_strncmp.c			\
 					ft_strlowcase.c			ft_how_mutch_search_in_str.c 	ft_strclen.c			\
 					ft_strjoin_flagclear.c	ft_strjoin_po.c					ft_strnchr.c			\
 					ft_strrev.c				del_str.c						ft_res_is_true.c		\
-					ft_is_num.c
+					ft_is_num.c				ft_strempty.c
 
 _STACK_FS		=	ft_free_stack.c			ft_pop_stack.c					ft_print_stack.c		\
 					ft_stack_isempty.c 		ft_push_stack.c

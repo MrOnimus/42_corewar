@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   top_part_of_file.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: immn <immn@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: rdremora <rdremora@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/06 13:51:11 by immn              #+#    #+#             */
-/*   Updated: 2020/02/10 15:48:31 by immn             ###   ########.fr       */
+/*   Updated: 2020/03/10 22:00:29 by rdremora         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
 
-void	del_3_str(char **s1, char **s2, char **s3) // От этого костыля стопроц надо избавляться, надо придумать что-то красивое
+void	del_3_str(char **s1, char **s2, char **s3) // TODO: От этого костыля стопроц надо избавляться, надо придумать что-то красивое
 {
 	if (s1)
 		ft_strdel(s1);
@@ -22,19 +22,7 @@ void	del_3_str(char **s1, char **s2, char **s3) // От этого костыл�
 		ft_strdel(s3);
 }
 
-int		empty(char *s, size_t n)//Эту нужно в либу закинуть
-{
-	while (n > 0)
-	{
-		if (*s != '\t' && *s != ' ')
-			return (0);
-		s++;
-		n--;
-	}
-	return (1);
-}
-
-static char	*give_full_name(int fd, size_t max_length, char *start, char *tmp)//Эту желательно разбить или сделать проще//save_that_attr
+static char	*give_full_name(int fd, size_t max_length, char *start, char *tmp)// TODO: Эту желательно разбить или сделать проще//save_that_attr
 {
 	char	*end;
 	char	*str;
@@ -70,7 +58,7 @@ static void	read_name(int fd, t_out *out, char *line)//read_name_n_com
 	char	*tmp;
 
 	tmp = NULL;
-	if ((!(start = ft_strchr(line, '"')) || !empty(line, start - line))
+	if ((!(start = ft_strchr(line, '"')) || !is_empty(line, start - line))
 		&& (g_error.id = 4))
 		return ;
 	if ((name = give_full_name(fd, COMMENT_LENGTH, start + 1, tmp)))
@@ -90,7 +78,7 @@ static void	read_comment(int fd, t_out *out, char *line)
 	char	*tmp;
 
 	tmp = NULL;
-	if ((!(start = ft_strchr(line, '"')) || !empty(line, start - line))
+	if ((!(start = ft_strchr(line, '"')) || !is_empty(line, start - line))
 		&& (g_error.id = 4))
 		return ;
 	if ((name = give_full_name(fd, COMMENT_LENGTH, start + 1, tmp)))
@@ -117,7 +105,7 @@ void		read_n_c(int fd, t_out *out)//get_name_n_comment
 		while (get_next_line(fd, &line) && (!*line || *line == COMMENT_CHAR))
 			ft_memdel((void**)&line);
 			//printf("out %d\n", ft_strncmp(COMMENT_CMD_STRING, line, c_len));
-		/*
+		/*	TODO:
 			тут две одинаковые проверки
 			желательно их как-то объединить.
 			плюс функци read_comment и read_name сделать одной функцией с до параметром

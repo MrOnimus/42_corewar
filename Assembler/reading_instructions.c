@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   reading_instructions.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: immn <immn@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: rdremora <rdremora@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/08 23:04:25 by immn              #+#    #+#             */
-/*   Updated: 2020/02/24 16:48:53 by immn             ###   ########.fr       */
+/*   Updated: 2020/03/10 21:59:35 by rdremora         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ static t_tokens	*validate(int fd)//validate_n_build_list
 	while (get_next_line(fd, &line))
 	{
 		if ((new = check_line(line)))
-		/**
+		/**TODO:
 		 * 1. Нужно протетировать функцию check_line
 		 * 		Можно просто смотреть по кодам ошибки по ходу программы и пытаться их провоцировать
 		 * 2. Строчка вида:
@@ -102,7 +102,7 @@ static t_tokens	*validate(int fd)//validate_n_build_list
 		curr->next = NULL;
 	if (!toks && (g_error.id = 19))
 		return (NULL);
-	//Надо бы попринтить токены, чтобы быть уверенным.
+	// TODO: Надо бы попринтить токены, чтобы быть уверенным.
 	return (toks);
 }
 
@@ -116,7 +116,7 @@ int					read_code(int fd, t_out *out)//read_instructions
 		return (1);
 	status = 0;
 	mark = fill_mark(read, status);
-	if (status == 1)//Эта часть кода не отработает. Нцужно передавать указатель - Передалать надо бэ
+	if (status == 1)// TODO: Эта часть кода не отработает. Нцужно передавать указатель - Передалать надо бэ
 	{
 		del_marks(mark);
 		del_tokens(read);
@@ -124,7 +124,7 @@ int					read_code(int fd, t_out *out)//read_instructions
 	}
 	read = del_empty(read);//Получили лист с валидными командами и их параметрами
 	out->code_size_int = replace_marks(read, mark);
-	code_to_bytes(read, out);//Эту функцию я бы вытащил отдельно
+	code_to_bytes(read, out);// TODO: Эту функцию я бы вытащил отдельно
 	out->c_exist = 1;
 	del_tokens(read);
 	return (0);

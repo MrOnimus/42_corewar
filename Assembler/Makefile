@@ -3,16 +3,16 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: immn <immn@student.42.fr>                  +#+  +:+       +#+         #
+#    By: rdremora <rdremora@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/02/04 13:59:19 by immn              #+#    #+#              #
-#    Updated: 2020/02/20 16:33:59 by immn             ###   ########.fr        #
+#    Updated: 2020/03/10 20:33:50 by rdremora         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME	= ../asm
 
-FLAGS	= #-Wall -Wextra -Werror
+FLAGS	= -Wall -Wextra -Werror
 
 LIB		= ../libft/libft.a
 INC		= -I../libft/includes/	-I./inc/

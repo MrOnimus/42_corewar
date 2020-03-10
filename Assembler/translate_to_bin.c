@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   translate_to_bin.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: immn <immn@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: rdremora <rdremora@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/05 13:39:54 by immn              #+#    #+#             */
-/*   Updated: 2020/02/24 16:59:03 by immn             ###   ########.fr       */
+/*   Updated: 2020/03/10 20:47:40 by rdremora         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ void		cook_raw(int fd, t_out **out, char *filename)//translation
 		del_output(&output);
 		return ;
 	}
-	//вывод перенести в отдельную функцию
+	// TODO: вывод перенести в отдельную функцию
 	write_magic(output);
 	to_file(output, filename);
 	*out = output;

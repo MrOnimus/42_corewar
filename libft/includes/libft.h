@@ -235,6 +235,7 @@ int					ft_strnchr(const char *s, char ch, int n);
 char				ft_strrev(char *a);
 int					ft_is_ok(char *s, int (*f)(int));//ft_res_is_true
 int					is_number(char *s);//ft_is_num
+int					is_empty(char *s, size_t n);
 
 
 /*
