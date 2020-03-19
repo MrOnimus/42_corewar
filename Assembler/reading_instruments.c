@@ -14,7 +14,8 @@
 
 void	skip_emptyness(char **p)
 {
-	while (**p == ' ' || **p == '\t')
+	while (**p == '\t' || **p == '\v' || **p == '\r' || **p == '\f' || \
+			**p == ' ')
 		(*p)++;
 }
 
@@ -32,7 +33,7 @@ char		find_sep(char *l, size_t *p)
 		return (2);
 	if (l[*p] == SEPARATOR_CHAR)
 		return (3);
-		
+
 	return (0);
 }
 

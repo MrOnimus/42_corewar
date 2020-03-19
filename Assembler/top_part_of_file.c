@@ -12,18 +12,10 @@
 
 #include "asm.h"
 
-void		del_3_str(char **s1, char **s2, char **s3) // TODO: От этого костыля стопроц надо избавляться, надо придумать что-то красивое
-{
-	del_str(s1);
-	del_str(s2);
-	del_str(s3);
-}
-
-static char	*give_full_name(int fd, size_t max_length, char *start, char *tmp)// TODO: Эту желательно разбить или сделать проще//save_that_attr
+static char	*give_full_name(int fd, size_t max_length, char *start, char *tmp)//save_that_attr
 {
 	char	*end;
 	char	*str;
-	char	*tmp2;
 
 	if ((end = ft_strchr(start, '"')))
 		str = ft_strsub(start, 0, end - start);
@@ -31,15 +23,10 @@ static char	*give_full_name(int fd, size_t max_length, char *start, char *tmp)//
 	{
 		str = ft_strdup(start);
 		while (get_next_line(fd, &start) && !(end = ft_strchr(start, '"')))
-		{
-			tmp = str;
-			str = ft_strjoin(str, start);
-			del_3_str(&start, &tmp, NULL);
-		}
+			str = ft_strjoin_free(str, start, 3);
 		tmp = ft_strsub(start, 0, end - start);
-		tmp2 = str;
-		str = ft_strjoin(str, tmp);
-		del_3_str(&tmp, &tmp2, &start);
+		str = ft_strjoin_free(str, tmp, 3);
+		ft_strdel(&start);
 	}
 	if (end && ft_strlen(str) <= max_length)
 		return (str);
@@ -86,10 +73,6 @@ void		read_n_c(int fd, t_out *out)//get_name_n_comment
 			ft_memdel((void**)&line);
 			//printf("out %d\n", ft_strncmp(COMMENT_CMD_STRING, line, c_len));
 		/*	TODO:
-			тут две одинаковые проверки
-			желательно их как-то объединить.
-			Это был первы таск
-
 			Отсутствуют повторные чеки на имя/коммент
 			Думаю, что надо, чтобы цикл чекал, чтобы в начале файла были либо пустые строки, либо строки начинающиеся на "."
 			Можно обработать и пробелы перед строкой, а то тут через strcmp сравнивается идентичность, а про пробелы вначале ничего

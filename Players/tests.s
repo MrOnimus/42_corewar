@@ -3,10 +3,10 @@
 #.name "stayin' alive"
 #.name "stayin' alive"
 
-
-
 .comment "Ha,Ha,Ha,stayiiiiin' aliiiiiiiiiive"
-.name "stayin' alive" airgoiber
+.name "stayin'
+alive
+and alive" airgoiber
 #.name "stayin' alive"
 
 
