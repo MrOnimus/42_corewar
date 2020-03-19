@@ -12,14 +12,11 @@
 
 #include "asm.h"
 
-void	del_3_str(char **s1, char **s2, char **s3) // TODO: От этого костыля стопроц надо избавляться, надо придумать что-то красивое
+void		del_3_str(char **s1, char **s2, char **s3) // TODO: От этого костыля стопроц надо избавляться, надо придумать что-то красивое
 {
-	if (s1)
-		ft_strdel(s1);
-	if (s2)
-		ft_strdel(s2);
-	if (s3)
-		ft_strdel(s3);
+	del_str(s1);
+	del_str(s2);
+	del_str(s3);
 }
 
 static char	*give_full_name(int fd, size_t max_length, char *start, char *tmp)// TODO: Эту желательно разбить или сделать проще//save_that_attr
@@ -51,7 +48,7 @@ static char	*give_full_name(int fd, size_t max_length, char *start, char *tmp)//
 	return (NULL);
 }
 
-static void	read_name(int fd, t_out *out, char *line)//read_name_n_com
+static void	read_dotval(int fd, t_out *out, char *line, int flag)//read_name_or_com if flag == 0 its name, else - comment
 {
 	char	*start;
 	char	*name;
@@ -59,7 +56,7 @@ static void	read_name(int fd, t_out *out, char *line)//read_name_n_com
 
 	tmp = NULL;
 	if ((!(start = ft_strchr(line, '"')) || !is_empty(line, start - line))
-		&& (g_error.id = 4))
+		&& (g_error.id = 4 + (flag - 1)))
 		return ;
 	if ((name = give_full_name(fd, COMMENT_LENGTH, start + 1, tmp)))
 	{
@@ -68,27 +65,10 @@ static void	read_name(int fd, t_out *out, char *line)//read_name_n_com
 	}
 	else
 		g_error.id += 1;
-	out->n_exist = 1;
-}
-
-static void	read_comment(int fd, t_out *out, char *line)
-{
-	char	*start;
-	char	*name;
-	char	*tmp;
-
-	tmp = NULL;
-	if ((!(start = ft_strchr(line, '"')) || !is_empty(line, start - line))
-		&& (g_error.id = 4))
-		return ;
-	if ((name = give_full_name(fd, COMMENT_LENGTH, start + 1, tmp)))
-	{
-		ft_strcpy(out->comm, name);
-		ft_strdel(&name);
-	}
+	if (!flag)
+		out->n_exist = 1;
 	else
-		g_error.id += 1;
-	out->c_exist = 1;
+		out->c_exist = 1;
 }
 
 void		read_n_c(int fd, t_out *out)//get_name_n_comment
@@ -108,26 +88,14 @@ void		read_n_c(int fd, t_out *out)//get_name_n_comment
 		/*	TODO:
 			тут две одинаковые проверки
 			желательно их как-то объединить.
-			плюс функци read_comment и read_name сделать одной функцией с до параметром
-			а то нахер нужны две функции, которые только захардкоженными элементами отличаются
-
 			Это был первы таск
 
-			Второй таск - основной цикл из этой функции (while (!out->c_exist || !out->n_exist))
-			как бы не очень работает
-			Если мы сначала зададим имя, а потом коммент, или наоборот, то цикл сразу закончится
-			При этом потом можно будет задать имя еще раз и коммент тоже - никаких проверок об этом уже не будет
-
+			Отсутствуют повторные чеки на имя/коммент
 			Думаю, что надо, чтобы цикл чекал, чтобы в начале файла были либо пустые строки, либо строки начинающиеся на "."
 			Можно обработать и пробелы перед строкой, а то тут через strcmp сравнивается идентичность, а про пробелы вначале ничего
 			Надо бы вообще их игнорить, думаю. Но это не точно. Короче именно момент с пробелами спорный, а остальное надо бы сделать.
 
-
 			Пока что оставляю так как было в оригинале
-
-
-			Еще надо, чтобы писало не о первой попавшейся ошибке, а об обеих
-			Типа если дублируется и имя и коммент, то чтобы писало и о первом и о втором
 
 			Еще в строке с именем\комментом если написать что-то после кавычек - не воспримет как ошибку. Тоже надо исправить
 		*/
@@ -135,13 +103,13 @@ void		read_n_c(int fd, t_out *out)//get_name_n_comment
 		{
 			if (out->c_exist && (g_error.id = 6) && del_str(&line))
 				return ;
-			read_comment(fd, out, line + c_len);
+			read_dotval(fd, out, line + c_len, 1);
 		}
 		else if (line && !ft_strncmp(NAME_CMD_STRING, line, n_len))
 		{
 			if (out->n_exist && (g_error.id = 5) && del_str(&line))
 				return ;
-			read_name(fd, out, line + n_len);
+			read_dotval(fd, out, line + n_len, 0);
 		}
 		else if (!line && (g_error.id = out->c_exist ? 7 : 8) && del_str(&line))
 			return ;

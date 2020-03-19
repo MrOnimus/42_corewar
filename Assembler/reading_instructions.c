@@ -44,7 +44,7 @@ t_tokens	*check_line(char *line)//parse_line
 		0 - prblm
 	*/
 	if (!(feedback = find_sep(line, &pos)) || (feedback == 3))
-	{ 
+	{
 		return ((g_error.id = 10) ? NULL : NULL);
 	}
 	if (!(new = ft_memalloc(sizeof(t_tokens))))
@@ -84,7 +84,6 @@ static t_tokens	*validate(int fd)//validate_n_build_list
 		 * 	name_lable:			; Alternative comment with space after ";"
 		 * 	выдает ошибку.
 		 * 	В остальных местах альтернативный комментарий отрабатывает.
-		 * 
 		**/
 		{
 			add_tok(&toks, &curr, new);
