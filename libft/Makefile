@@ -45,7 +45,7 @@ _TYPES_FS		=	ft_atoi.c				ft_isblank.c					ft_islower.c			\
 					ft_itoa_pointer.c		ft_itoa_roundd.c				ft_itoa_u.c				\
 					ft_strisnumeric.c		ft_strislowercase.c				ft_strisalpha.c			\
 					ft_checklong.c			ft_chjoinstr.c					ft_countchars.c			\
-					ft_intclear.c			ft_ltoa_base.c					ft_nbrlen_base.c		
+					ft_intclear.c			ft_ltoa_base.c					ft_nbrlen_base.c
 
 _LIST_FS		=	ft_lstiter.c			ft_lstmap.c						ft_lstdelone.c			\
 					ft_lstdel.c				ft_lstadd.c						ft_lstnew.c				\
@@ -70,7 +70,7 @@ _STR_FS			=	ft_strnstr.c			ft_strcmp.c						ft_strncmp.c			\
 					ft_strlowcase.c			ft_how_mutch_search_in_str.c 	ft_strclen.c			\
 					ft_strjoin_flagclear.c	ft_strjoin_po.c					ft_strnchr.c			\
 					ft_strrev.c				del_str.c						ft_res_is_true.c		\
-					ft_is_num.c				ft_strempty.c
+					ft_is_num.c				ft_strempty.c					ft_strnempty.c
 
 _STACK_FS		=	ft_free_stack.c			ft_pop_stack.c					ft_print_stack.c		\
 					ft_stack_isempty.c 		ft_push_stack.c

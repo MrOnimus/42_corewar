@@ -108,7 +108,6 @@ t_mark		*fill_mark(t_tokens *read, char status)
 	start = NULL;
 	while (read)
 	{
-		
 		if (read->mark && label_correct(read->mark))
 		{
 			start = ft_memalloc(sizeof(t_mark));

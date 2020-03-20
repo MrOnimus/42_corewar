@@ -38,7 +38,24 @@ char		find_sep(char *l, size_t *p)
 	return (0);
 }
 
-void			check_for_comment(char *line)//crop_comment
+int			check_for_comment(char *line)
+{
+	char *tmp;
+
+	tmp = line;
+	while (*tmp)
+	{
+		if (!ft_isspace(*tmp) && *tmp != COMMENT_CHAR
+				&& *tmp != ALT_COMMENT_CHAR)
+			return (-1);
+		else if (*tmp == COMMENT_CHAR || *tmp == ALT_COMMENT_CHAR)
+			return (1);
+		tmp++;
+	}
+	return (0);
+}
+
+void		remove_comment(char *line)//crop_comment
 {
 	char	*p1;
 	char	*p2;

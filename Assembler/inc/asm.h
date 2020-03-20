@@ -71,7 +71,8 @@ void			rebase_args(t_tokens *new, int n_arg, char **args);
 char			label_correct(char *l);
 size_t			replace_marks(t_tokens *read, t_mark *mark);
 void			skip_emptyness(char **p);
-void			check_for_comment(char *line);
+int				check_for_comment(char *line);
+void			remove_comment(char *line);
 void			code_to_bytes(t_tokens *tokens, t_out *out);
 
 

@@ -28,10 +28,13 @@ static char	*give_full_name(int fd, size_t max_length, char *start, char *tmp)//
 		str = ft_strjoin_free(str, tmp, 3);
 		ft_strdel(&start);
 	}
-	if (end && ft_strlen(str) <= max_length)
+	if (end && ft_strlen(str) <= max_length && check_for_comment(end + 1) != -1)
 		return (str);
 	ft_strdel(&str);
-	g_error.id = end ? 17 : 3;
+	if (check_for_comment(end + 1) == -1)
+		g_error.id = 3;
+	else
+		g_error.id = end ? 17 : 3;
 	return (NULL);
 }
 
@@ -40,32 +43,55 @@ static void	read_dotval(int fd, t_out *out, char *line, int flag)//read_name_or_
 	char	*start;
 	char	*name;
 	char	*tmp;
+	int		max_length;
 
 	tmp = NULL;
-	if ((!(start = ft_strchr(line, '"')) || !is_empty(line, start - line))
+	if ((!(start = ft_strchr(line, '"')) || !ft_strnempty(line, start - line))
 		&& (g_error.id = 4 + (flag - 1)))
 		return ;
-	if ((name = give_full_name(fd, COMMENT_LENGTH, start + 1, tmp)))
+	max_length = !(flag) ? PROG_NAME_LENGTH : COMMENT_LENGTH;
+	if ((name = give_full_name(fd, max_length, start + 1, tmp)))
 	{
 		ft_strcpy(out->comm, name);
 		ft_strdel(&name);
 	}
 	else
-		g_error.id += 1;
+		g_error.id += flag;
 	if (!flag)
 		out->n_exist = 1;
 	else
 		out->c_exist = 1;
 }
 
-void		read_n_c(int fd, t_out *out)//get_name_n_comment
+int			preread_dotval(int fd, t_out *out, char *line)
 {
-	char	*line;
 	size_t	n_len;
 	size_t	c_len;
 
 	n_len = ft_strlen(NAME_CMD_STRING);
 	c_len = ft_strlen(COMMENT_CMD_STRING);
+	if (line && !ft_strncmp(COMMENT_CMD_STRING, line, c_len))
+	{
+		if (out->c_exist && (g_error.id = 6) && del_str(&line))
+			return (-1);
+		read_dotval(fd, out, line + c_len, 1);
+		return (1);
+	}
+	else if (line && !ft_strncmp(NAME_CMD_STRING, line, n_len))
+	{
+		if (out->n_exist && (g_error.id = 5) && del_str(&line))
+			return (-1);
+		read_dotval(fd, out, line + n_len, 0);
+		return (1);
+	}
+	return (0);
+}
+
+void		read_n_c(int fd, t_out *out)//get_name_n_comment
+{
+	char	*line;
+	char	*tmp;
+
 	line = NULL;
 	while (!out->c_exist || !out->n_exist)
 	{
@@ -74,29 +100,18 @@ void		read_n_c(int fd, t_out *out)//get_name_n_comment
 			ft_memdel((void**)&line);
 			//printf("out %d\n", ft_strncmp(COMMENT_CMD_STRING, line, c_len));
 		/*	TODO:
-			Отсутствуют повторные чеки на имя/коммент
+			Отсутствуют чеки на дабл имя/коммент
 			Думаю, что надо, чтобы цикл чекал, чтобы в начале файла были либо пустые строки, либо строки начинающиеся на "."
-			Можно обработать и пробелы перед строкой, а то тут через strcmp сравнивается идентичность, а про пробелы вначале ничего
-			Надо бы вообще их игнорить, думаю. Но это не точно. Короче именно момент с пробелами спорный, а остальное надо бы сделать.
 
 			Пока что оставляю так как было в оригинале
-
-			Еще в строке с именем\комментом если написать что-то после кавычек - не воспримет как ошибку. Тоже надо исправить
 		*/
-		if (line && !ft_strncmp(COMMENT_CMD_STRING, line, c_len))
-		{
-			if (out->c_exist && (g_error.id = 6) && del_str(&line))
-				return ;
-			read_dotval(fd, out, line + c_len, 1);
-		}
-		else if (line && !ft_strncmp(NAME_CMD_STRING, line, n_len))
-		{
-			if (out->n_exist && (g_error.id = 5) && del_str(&line))
-				return ;
-			read_dotval(fd, out, line + n_len, 0);
-		}
-		else if (!line && (g_error.id = out->c_exist ? 7 : 8) && del_str(&line))
+		tmp = ft_strtrim(line);
+		if (preread_dotval(fd, out, tmp) == 1)
+			;
+		else if (!line && (g_error.id = out->c_exist ? 7 : 8) && del_str(&line)
+				&& del_str(&tmp))
 			return ;
+		ft_strdel(&tmp);
 		ft_strdel(&line);
 	}
 }

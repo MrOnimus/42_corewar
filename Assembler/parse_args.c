@@ -96,7 +96,7 @@ char			parse_args(char *line, t_tokens *new)//parse_arguments
 	char	**args;
 	int		n_arg;
 
-	check_for_comment(line);
+	remove_comment(line);
 	n_arg = 0;
 	args = ft_strsplit(line, SEPARATOR_CHAR);
 	while (args[n_arg])

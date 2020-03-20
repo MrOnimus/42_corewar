@@ -12,7 +12,7 @@
 
 #include "asm.h"
 
-t_op		*check_command(char *l, size_t pos)//cmp_commands
+t_op			*check_command(char *l, size_t pos)//cmp_commands
 {
 	int		i;
 
@@ -27,7 +27,7 @@ t_op		*check_command(char *l, size_t pos)//cmp_commands
 	return (NULL);
 }
 
-t_tokens	*check_line(char *line)//parse_line
+t_tokens		*check_line(char *line)//parse_line
 {
 	t_tokens	*new;
 	size_t		pos;
@@ -80,10 +80,6 @@ static t_tokens	*validate(int fd)//validate_n_build_list
 		/**TODO:
 		 * 1. Нужно протетировать функцию check_line
 		 * 		Можно просто смотреть по кодам ошибки по ходу программы и пытаться их провоцировать
-		 * 2. Строчка вида:
-		 * 	name_lable:			; Alternative comment with space after ";"
-		 * 	выдает ошибку.
-		 * 	В остальных местах альтернативный комментарий отрабатывает.
 		**/
 		{
 			add_tok(&toks, &curr, new);
@@ -105,7 +101,7 @@ static t_tokens	*validate(int fd)//validate_n_build_list
 	return (toks);
 }
 
-int					read_code(int fd, t_out *out)//read_instructions
+int				read_code(int fd, t_out *out)//read_instructions
 {
 	t_tokens	*read;
 	char		status;

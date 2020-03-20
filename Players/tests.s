@@ -1,12 +1,14 @@
 
 
 #.name "stayin' alive"
-#.name "stayin' alive"
+;.name "stayin' alive"
 
-.comment "Ha,Ha,Ha,stayiiiiin' aliiiiiiiiiive"
-.name "stayin'
-alive
-and alive" airgoiber
+       .comment "Ha,Ha,Ha,
+	stayiiiiin' stayiiiiin' stayiiiiin' stayiiiiin' stayiiiiin' stayiiiiin' stayiiiiin' stayiiiiin'
+	aliiiiiiiiiive" ; really alive
+	.name "stayin'
+alive alive alive alive alive alive alive alive alive alive alive alive
+and alive" # Alternative comment with space after ";"
 #.name "stayin' alive"
 
 

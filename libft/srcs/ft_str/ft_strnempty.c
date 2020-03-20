@@ -12,13 +12,14 @@
 
 #include "libft.h"
 
-int		ft_strempty(char *s)
+int		ft_strnempty(char *s, size_t n)
 {
-	while (*s)
+	while (n > 0)
 	{
-		if (!ft_isspace(*s))
+		if (*s != '\t' && *s != ' ')
 			return (0);
 		s++;
+		n--;
 	}
 	return (1);
 }
