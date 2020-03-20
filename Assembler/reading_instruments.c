@@ -24,7 +24,8 @@ char		find_sep(char *l, size_t *p)
 	*p = 0;
 	//printf("line = %s;", l);
 	while (l[*p] && l[*p] != LABEL_CHAR && l[*p] != DIRECT_CHAR && l[*p] != ' '
-		&& l[*p] != '\t' && l[*p] != SEPARATOR_CHAR && l[*p] != COMMENT_CHAR)
+		&& l[*p] != '\t' && l[*p] != SEPARATOR_CHAR && l[*p] != COMMENT_CHAR
+		&& l[*p] != ALT_COMMENT_CHAR)
 		(*p)++;
 	//printf(" and char %c\n", l[*p]);
 	if (l[*p] == LABEL_CHAR)

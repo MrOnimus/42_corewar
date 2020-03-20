@@ -69,7 +69,8 @@ void		read_n_c(int fd, t_out *out)//get_name_n_comment
 	line = NULL;
 	while (!out->c_exist || !out->n_exist)
 	{
-		while (get_next_line(fd, &line) && (!*line || *line == COMMENT_CHAR))
+		while (get_next_line(fd, &line) && (!*line || *line == COMMENT_CHAR
+					|| *line == ALT_COMMENT_CHAR))
 			ft_memdel((void**)&line);
 			//printf("out %d\n", ft_strncmp(COMMENT_CMD_STRING, line, c_len));
 		/*	TODO:

@@ -34,7 +34,7 @@ t_tokens	*check_line(char *line)//parse_line
 	char		feedback;
 
 	skip_emptyness(&line);
-	if (*line == COMMENT_CHAR || !*line)
+	if (*line == COMMENT_CHAR || *line == ALT_COMMENT_CHAR || !*line)
 		return (NULL);
 	//feedback - marker of separator
 	/*
