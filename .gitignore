@@ -54,3 +54,4 @@ dkms.conf
 # Custom
 *.cor
 test.sh
+asm

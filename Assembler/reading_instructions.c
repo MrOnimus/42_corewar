@@ -96,8 +96,7 @@ static t_tokens	*validate(int fd)//validate_n_build_list
 	if (curr)
 		curr->next = NULL;
 	if (!toks && (g_error.id = 19))
-		return (NULL);
-	// TODO: Надо бы попринтить токены, чтобы быть уверенным.
+		return (NULL);	// TODO: Надо бы попринтить токены, чтобы быть уверенным.
 	return (toks);
 }
 
@@ -119,7 +118,7 @@ int				read_code(int fd, t_out *out)//read_instructions
 	}
 	read = del_empty(read);//Получили лист с валидными командами и их параметрами
 	out->code_size_int = replace_marks(read, mark);
-	code_to_bytes(read, out);// TODO: Эту функцию я бы вытащил отдельно
+	code_to_bytes(read, out);
 	out->c_exist = 1;
 	del_tokens(read);
 	return (0);
