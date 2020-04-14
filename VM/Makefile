@@ -8,7 +8,7 @@ FLAGS = #-Wall -Wextra -Werror
 
 INC = ./inc
 
-LIBRARY = ./libft
+LIBRARY = ../libft
 
 all: $(NAME)
 
