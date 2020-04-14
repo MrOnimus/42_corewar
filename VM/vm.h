@@ -13,8 +13,8 @@
 
 typedef struct	s_player
 {
-	char	*code;
-	int		code_range;
+	char		*code;
+	int			code_range;
 }				t_player;
 
 typedef struct	s_vm
@@ -24,5 +24,7 @@ typedef struct	s_vm
 	t_player	*player;
 	
 }				t_vm;
+
+void	init_arena(t_vm *vm);
 
 #endif /* vm_h */
