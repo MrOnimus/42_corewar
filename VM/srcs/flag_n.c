@@ -1,25 +1,5 @@
 #include "corewar.h"
 
-int get_num_of_players(int argc, char **argv)
-{
-	int i;
-	int res;
-
-	i = 0;
-	res = 0;
-	while (++i < argc)
-		if (!ft_strequ(argv[i], "-dump") && !ft_strequ(argv[i], "-n"))
-			res++;
-		else if (ft_strequ(argv[i], "-dump") && i + 1 < argc && ft_strisnumeric(argv[i + 1]))
-			i++;
-		else if (ft_strequ(argv[i], "-n") && i + 2 < argc && ft_strisnumeric(argv[i + 1]) &&
-			!ft_strequ(argv[i + 2], "-dump") && !ft_strequ(argv[i + 2], "-n"))
-			i++;
-		else
-			return (-1);//После флага ничего нет, либо не натуральное число или ноль		
-	return res;
-}
-
 int valid_n_flags(int argc, char** argv, int n_pl)
 {
 	int i;
@@ -43,13 +23,6 @@ int valid_n_flags(int argc, char** argv, int n_pl)
 	return (1);
 }
 
-void fill_num(t_champion** champions, int num, char* str)
-{
-	champions[num - 1] = ft_memalloc(sizeof(t_champion));
-	champions[num - 1]->number = num;
-	champions[num - 1]->reg[1] = -num;
-	champions[num - 1]->filename = str;
-}
 char *cnt_champ(int argc, char** argv, int cnt)
 {
 	int i;
@@ -90,7 +63,7 @@ void fill_pl_wo_num(int argc, char** argv, t_champion** champions, int n_pl)
 		}
 		if (!flag)
 		{
-			fill_num(champions, i, cnt_champ(argc, argv, cnt));
+			create_player(champions, i, cnt_champ(argc, argv, cnt));
 			cnt++;
 		}
 	}
@@ -110,7 +83,7 @@ int fill_number_players(int argc, char** argv, t_champion** champions, int n_pl)
 			if (champions[cur_num - 1] != NULL)
 				put_error(6);
 			else
-				fill_num(champions, cur_num, argv[i + 2]);
+				create_player(champions, cur_num, argv[i + 2]);
 		}
 	}
 	fill_pl_wo_num(argc, argv, champions, n_pl);
