@@ -16,10 +16,12 @@ void init_arena(t_vm *vm)
 	
 	vm->arena = ft_memalloc(MEM_SIZE);
 	shift = 0;
+	i = 0;
 	range = MEM_SIZE / vm->count_players;
-	for (i = 0; i < vm->count_players; i++) {
+	while (i < vm->count_players) {
 		ft_memcpy(&(vm->arena[shift]), vm->player[i].code, vm->player[i].code_range);
 		shift += range;
+		i++;
 	}
 	
 }
