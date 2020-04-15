@@ -9,6 +9,7 @@
 typedef struct			s_champion
 {
 	int					number;
+	char				*name;
 	char				*filename;
 	char				*comment;
 	int					reg[REG_NUMBER + 1];
@@ -25,8 +26,9 @@ typedef struct			s_vm
 	int					dump;
 	int					much_players;
 	int					last_alive;
-	char				*name_of_winner;	
-}						t_vm;
+	char				*name_of_winner;
+	int					to_die;	
+	}						t_vm;
 
 extern const char		g_error[NUM_ERR][ERR_LENGTH];
 int 					get_num_of_players(int argc, char **argv);
@@ -35,6 +37,7 @@ int						fill_number_players(int argc, char** argv, t_champion** champions, int 
 void					put_error(int err_code);
 int						get_dump(int argc, char** argv);
 void					create_player(t_champion** champions, int num, char* str);
+void					set_parameters(t_vm *field, t_champion **champions, int num);
 
 
 //debug functions

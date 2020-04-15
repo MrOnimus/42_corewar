@@ -45,3 +45,10 @@ int get_num_of_players(int argc, char **argv)
 			return (-1);//После флага ничего нет, либо не натуральное число или ноль		
 	return res;
 }
+
+void		set_parameters(t_vm *field, t_champion **champions, int num)
+{
+	field->last_alive = num;
+	field->name_of_winner = champions[num - 1]->name;
+	field->to_die = CYCLE_TO_DIE;
+}
