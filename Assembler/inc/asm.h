@@ -50,7 +50,7 @@ t_mark			*fill_mark(t_tokens *read, char status);
 t_tokens		*del_empty(t_tokens *read);
 t_tokens		*parse_line(char *line);
 void			*free_return(t_tokens *new);
-char			*correct_name(char *name);
+char			*check_valid_name(char *name);
 t_op			*cmp_commands(char *l, size_t pos);
 size_t			weight(t_tokens *me);
 void			add_tok(t_tokens **toks, t_tokens **curr, t_tokens *new);
@@ -67,12 +67,12 @@ int				mark_position(char *name, t_mark *marks);
 void			del_output(t_out **out);
 void			del_tokens(t_tokens *me);
 char			parse_args(char *line, t_tokens *new);
-void			rebase_args(t_tokens *new, int n_arg, char **args);
+void			free_bad_args(t_tokens *new, int n_arg, char **args);
 char			label_correct(char *l);
 size_t			move_marks(t_tokens *read, t_mark *mark);
 void			skip_emptyness(char **p);
 int				check_for_comment(char *line);
-void			remove_comment(char *line);
+void			crop_comment(char *line);
 void			code_to_bytes(t_tokens *tokens, t_out *out);
 
 

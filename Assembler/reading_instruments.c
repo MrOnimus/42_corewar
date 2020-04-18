@@ -55,7 +55,7 @@ int			check_for_comment(char *line)
 	return (0);
 }
 
-void		remove_comment(char *line)//crop_comment
+void		crop_comment(char *line)
 {
 	char	*p1;
 	char	*p2;

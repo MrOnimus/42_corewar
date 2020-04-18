@@ -12,7 +12,7 @@
 
 #include "asm.h"
 
-char	*correct_name(char *name)//check_valid_name
+char	*check_valid_name(char *name)
 {
 	char *p;
 	char *tmp;

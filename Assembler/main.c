@@ -25,7 +25,7 @@ int			main(int ac, char **av)
 		fd = open(*av, O_RDONLY);
 		if (fd < 3)
 			g_error.id = 1;
-		else if (!(file_name = correct_name(*av)))
+		else if (!(file_name = check_valid_name(*av)))
 		{
 			g_error.id = 2;
 			close(fd);

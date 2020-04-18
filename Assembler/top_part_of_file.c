@@ -12,7 +12,7 @@
 
 #include "asm.h"
 
-static char	*give_full_name(int fd, size_t max_length, char *start, char *tmp)//save_that_attr
+static char	*get_full_dotval(int fd, size_t max_length, char *start, char *tmp)
 {
 	char	*end;
 	char	*str;
@@ -38,7 +38,7 @@ static char	*give_full_name(int fd, size_t max_length, char *start, char *tmp)//
 	return (NULL);
 }
 
-static void	read_dotval(int fd, t_out *out, char *line, int flag)//read_name_or_com if flag == 0 its name, else - comment
+static void	read_dotval(int fd, t_out *out, char *line, int flag)
 {
 	char	*start;
 	char	*name;
@@ -50,7 +50,7 @@ static void	read_dotval(int fd, t_out *out, char *line, int flag)//read_name_or_
 		&& (g_error.id = 4 + (flag - 1)))
 		return ;
 	max_length = !(flag) ? PROG_NAME_LENGTH : COMMENT_LENGTH;
-	if ((name = give_full_name(fd, max_length, start + 1, tmp)))
+	if ((name = get_full_dotval(fd, max_length, start + 1, tmp)))
 	{
 		ft_strcpy(out->comm, name);
 		ft_strdel(&name);

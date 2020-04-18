@@ -12,7 +12,7 @@
 
 #include "asm.h"
 
-void		rebase_args(t_tokens *new, int n_arg, char **args)//free_bad_args
+void		free_bad_args(t_tokens *new, int n_arg, char **args)
 {
 	if (args[0] && !args[0][0])
 	{
@@ -96,7 +96,7 @@ char			parse_args(char *line, t_tokens *new)
 	char	**args;
 	int		n_arg;
 
-	remove_comment(line);
+	crop_comment(line);
 	n_arg = 0;
 	args = ft_strsplit(line, SEPARATOR_CHAR);
 	while (args[n_arg])
@@ -107,7 +107,7 @@ char			parse_args(char *line, t_tokens *new)
 			return (del_2mas(args));
 		n_arg++;
 	}
-	rebase_args(new, n_arg, args);
+	free_bad_args(new, n_arg, args);
 	free(args);
 	if (n_arg != new->command->arg_q && (g_error.id = 12))
 		return (1);
