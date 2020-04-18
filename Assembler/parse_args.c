@@ -91,7 +91,7 @@ char			check_arg(char **arg, char *type, int *value)
 	return (0);
 }
 
-char			parse_args(char *line, t_tokens *new)//parse_arguments
+char			parse_args(char *line, t_tokens *new)
 {
 	char	**args;
 	int		n_arg;

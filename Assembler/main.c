@@ -32,13 +32,13 @@ int			main(int ac, char **av)
 		}
 		else
 		{
-			cook_raw(fd, &out, file_name);
+			translation(fd, &out, file_name);
 			close(fd);
 		}
 		if (g_error.id)
-			say_error(file_name);
+			fail_msg(file_name);
 		else
-			say_okey(file_name);
+			success_msg(file_name);
 	}
 	return (0);
 }

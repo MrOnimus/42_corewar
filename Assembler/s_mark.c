@@ -12,7 +12,7 @@
 
 #include "asm.h"
 
-size_t		replace_marks(t_tokens *read, t_mark *mark)//move_marks
+size_t		move_marks(t_tokens *read, t_mark *mark)
 {
 	size_t	n;
 
@@ -28,11 +28,11 @@ size_t		replace_marks(t_tokens *read, t_mark *mark)//move_marks
 		{
 			//printf("2 - %s\n", read->command->cmd);
 			if (read->a1)
-				read->values[0] = calc_mark(read->a1, mark) - n;
+				read->values[0] = mark_position(read->a1, mark) - n;
 			if (read->a2)
-				read->values[1] = calc_mark(read->a2, mark) - n;
+				read->values[1] = mark_position(read->a2, mark) - n;
 			if (read->a3)
-				read->values[2] = calc_mark(read->a3, mark) - n;
+				read->values[2] = mark_position(read->a3, mark) - n;
 			n += weight(read);
 			ft_strdel(&read->a1);
 			ft_strdel(&read->a2);
@@ -44,7 +44,7 @@ size_t		replace_marks(t_tokens *read, t_mark *mark)//move_marks
 	return (n);
 }
 
-int			calc_mark(char *name, t_mark *marks)//mark_position
+int			mark_position(char *name, t_mark *marks)
 {
 	int	pos;
 

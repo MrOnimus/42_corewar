@@ -12,7 +12,7 @@
 
 #include "asm.h"
 
-t_op			*check_command(char *l, size_t pos)//cmp_commands
+t_op			*cmp_commands(char *l, size_t pos)
 {
 	int		i;
 
@@ -27,7 +27,7 @@ t_op			*check_command(char *l, size_t pos)//cmp_commands
 	return (NULL);
 }
 
-t_tokens		*check_line(char *line)//parse_line
+t_tokens		*parse_line(char *line)
 {
 	t_tokens	*new;
 	size_t		pos;
@@ -59,7 +59,7 @@ t_tokens		*check_line(char *line)//parse_line
 		if (feedback != 2)
 			return (free_return(new));
 	}
-	if (!(new->command = check_command(line, pos)) ||
+	if (!(new->command = cmp_commands(line, pos)) ||
 		parse_args(line + pos + 1, new))
 		return (free_return(new));
 	return (new);
@@ -76,9 +76,9 @@ static t_tokens	*validate(int fd)//validate_n_build_list
 	curr = NULL;
 	while (get_next_line(fd, &line))
 	{
-		if ((new = check_line(line)))
+		if ((new = parse_line(line)))
 		/**TODO:
-		 * 1. Нужно протетировать функцию check_line
+		 * 1. Нужно протетировать функцию parse_line
 		 * 		Можно просто смотреть по кодам ошибки по ходу программы и пытаться их провоцировать
 		**/
 		{
@@ -117,7 +117,7 @@ int				read_code(int fd, t_out *out)//read_instructions
 		return (1);
 	}
 	read = del_empty(read);//Получили лист с валидными командами и их параметрами
-	out->code_size_int = replace_marks(read, mark);
+	out->code_size_int = move_marks(read, mark);
 	code_to_bytes(read, out);
 	out->c_exist = 1;
 	del_tokens(read);

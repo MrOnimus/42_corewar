@@ -58,7 +58,7 @@ static char	check_newline(int fd)//nl_in_eof
 	return (0);
 }
 
-void		cook_raw(int fd, t_out **out, char *filename)//translation
+void		translation(int fd, t_out **out, char *filename)
 {
 	t_out	*output;
 

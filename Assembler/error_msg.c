@@ -36,7 +36,7 @@ static char	*g_msg[21] = { //g_err_handler  -  need change msgs
 	"\033[31m; can't allocate memory\n\033[0m"								//20
 };
 
-void		say_error(char *fname)//fail_msg
+void		fail_msg(char *fname)
 {
 	ft_putstr_fd("\033[31mThe file \033[0m", 2);
 	ft_putstr_fd(g_error.filename, 2);
