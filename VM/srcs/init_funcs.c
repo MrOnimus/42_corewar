@@ -8,7 +8,16 @@ void create_player(t_champion** champions, int num, char* str)
 	champions[num - 1]->filename = str;
 	/*
 		Here we init all players parameters from file
-	
+		fd
+		check magic header 
+		long of program name - lseek
+		check size
+		get and check name
+		get and check comment
+		give colour?
+		get code
+		
+
 	*/
 }
 
@@ -20,7 +29,7 @@ int get_dump(int argc, char** argv)
 	i = 0;
 	dump = 0;
 	while (++i < argc)
-		if (!ft_strequ(argv[i], "-dump"))
+		if (ft_strequ(argv[i], "-dump"))
 			dump = ft_atoi(argv[i]);		
 	return dump;
 }

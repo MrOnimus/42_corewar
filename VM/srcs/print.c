@@ -9,3 +9,31 @@ void print_players (t_champion		**champions, int num)
 		i++;
 	}
 }
+
+void print_logo()
+{
+	ft_printf("╔═══╦═══╦═══╦═══╗ ╔═╗╔╗╔═╦═══╦═══╗\n");
+	ft_printf("║╔══╣╔═╗║╔═╗║╔══╝ ║ ║║║║ ║╔═╗║╔═╗║\n");
+	ft_printf("║║  ║║ ║║╚═╝║╚══╗ ║ ║║║║ ║╚═╝║╚═╝║\n");
+	ft_printf("║║  ║║ ║║╔╗╔╣╔══╝ ║ ║║║║ ║╔═╗║╔╗╔╝\n");
+	ft_printf("║╚══╣╚═╝║║║║║╚══╗ ║ ╚╝╚╝ ║║ ║║║║║\n");
+	ft_printf("╚═══╩═══╩╝╚╝╚═══╝ ╚══╝╚══╩╝ ╚╩╝╚╝\n");
+	ft_printf("\n");
+}
+
+void intro(t_champion **champions, int num)
+{
+	int index;
+
+	index = 1;
+	ft_printf("Introducing contestants...\n");
+	while (index <= num)
+	{
+		ft_printf("* Player %d, weighing %d bytes, \"%s\" (\"%s\") !\n",
+												index,
+												champions[index - 1]->code_size,
+												champions[index - 1]->name,
+												champions[index - 1]->comment);
+		index++;
+	}
+}

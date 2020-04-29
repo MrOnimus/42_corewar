@@ -12,6 +12,7 @@ typedef struct			s_champion
 	char				*name;
 	char				*filename;
 	char				*comment;
+	int					code_size;
 	int					reg[REG_NUMBER + 1];
 
 	struct s_champion	*next;
@@ -28,7 +29,24 @@ typedef struct			s_vm
 	int					last_alive;
 	char				*name_of_winner;
 	int					to_die;	
-	}						t_vm;
+}						t_vm;
+
+typedef struct			s_cursor
+{
+	int					id;
+	int					carry;
+	int					op_code;
+	int					last_live;
+	int					cycles_to_exec;
+	int					args_types[3];
+	int					pc;
+	int					step;
+	int					reg[REG_NUMBER];
+	t_champion			*player;
+	struct s_cursor		*next;
+}						t_cursor;
+//struct from braznik
+
 
 extern const char		g_error[NUM_ERR][ERR_LENGTH];
 int 					get_num_of_players(int argc, char **argv);
@@ -42,4 +60,7 @@ void					set_parameters(t_vm *field, t_champion **champions, int num);
 
 //debug functions
 void					print_players (t_champion		**champions, int num);
+//print
+void					print_logo();
+void 					intro(t_champion **champions, int num);
 #endif
