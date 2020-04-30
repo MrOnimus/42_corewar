@@ -22,7 +22,7 @@ char		fill_mark(char status)
 	}
 }
 
-int					main(void)//read_instructions
+int					main(void)
 {
 	char		status;
 	char 		mark;
@@ -36,7 +36,7 @@ int					main(void)//read_instructions
 	// 	return (1);
 	// }
 	// read = del_empty(read);
-	// out->code_size_int = replace_marks(read, mark);
+	// out->code_size_int = move_marks(read, mark);
 	// code_to_bytes(read, out);
 	// out->c_exist = 1;
 	// del_tokens(read);

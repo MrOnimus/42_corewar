@@ -22,12 +22,10 @@ void	skip_emptyness(char **p)
 char		find_sep(char *l, size_t *p)
 {
 	*p = 0;
-	//printf("line = %s;", l);
 	while (l[*p] && l[*p] != LABEL_CHAR && l[*p] != DIRECT_CHAR && l[*p] != ' '
 		&& l[*p] != '\t' && l[*p] != SEPARATOR_CHAR && l[*p] != COMMENT_CHAR
 		&& l[*p] != ALT_COMMENT_CHAR)
 		(*p)++;
-	//printf(" and char %c\n", l[*p]);
 	if (l[*p] == LABEL_CHAR)
 		return (1);
 	if (l[*p] == DIRECT_CHAR || l[*p] == ' ' || l[*p] == '\t')
@@ -55,7 +53,7 @@ int			check_for_comment(char *line)
 	return (0);
 }
 
-void		remove_comment(char *line)//crop_comment
+void		crop_comment(char *line)
 {
 	char	*p1;
 	char	*p2;
@@ -64,14 +62,13 @@ void		remove_comment(char *line)//crop_comment
 	p2 = ft_strchr(line, ALT_COMMENT_CHAR);
 	if (!p1 && !p2)
 		return ;
-//	printf("check comment %s\n", line);
 	if ((p1 > p2 && p2) || !p1)
 		*p2 = '\0';
 	else if ((p2 > p1 && p1) || !p2)
 		*p1 = '\0';
 }
 
-char			del_2mas(char **me)//free_two_dim_array
+char			free_two_dim_array(char **me)
 {
 	char **start;
 

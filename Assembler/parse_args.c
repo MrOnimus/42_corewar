@@ -12,7 +12,7 @@
 
 #include "asm.h"
 
-void		rebase_args(t_tokens *new, int n_arg, char **args)//free_bad_args
+void		free_bad_args(t_tokens *new, int n_arg, char **args)
 {
 	if (args[0] && !args[0][0])
 	{
@@ -49,7 +49,7 @@ static char		check_value(int *value, char **s)
 	else
 	{
 		*value = ft_atoi(*s);
-		if (!is_number(*s) && (g_error.id = 11))
+		if (!ft_is_num(*s) && (g_error.id = 11))
 			return (1);
 		free(*s);
 		*s = ft_strnew(0);
@@ -68,7 +68,7 @@ static char		*fill_type(char *type, char *s)
 		free(s);
 		return (tmp);
 	}
-	else if (*s == 'r' && ft_is_ok(s + 1, ft_isdigit))
+	else if (*s == 'r' && ft_res_is_true(s + 1, ft_isdigit))
 	{
 		*type = T_REG;
 		tmp = ft_strdup(s + 1);
@@ -91,23 +91,23 @@ char			check_arg(char **arg, char *type, int *value)
 	return (0);
 }
 
-char			parse_args(char *line, t_tokens *new)//parse_arguments
+char			parse_args(char *line, t_tokens *new)
 {
 	char	**args;
 	int		n_arg;
 
-	remove_comment(line);
+	crop_comment(line);
 	n_arg = 0;
 	args = ft_strsplit(line, SEPARATOR_CHAR);
 	while (args[n_arg])
 	{
 		if (n_arg > new->command->arg_q && (g_error.id = 12))
-			return (del_2mas(args));
+			return (free_two_dim_array(args));
 		if (check_arg(&args[n_arg], &new->types[n_arg], &new->values[n_arg]))
-			return (del_2mas(args));
+			return (free_two_dim_array(args));
 		n_arg++;
 	}
-	rebase_args(new, n_arg, args);
+	free_bad_args(new, n_arg, args);
 	free(args);
 	if (n_arg != new->command->arg_q && (g_error.id = 12))
 		return (1);

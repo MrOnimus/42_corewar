@@ -12,7 +12,7 @@
 
 #include "asm.h"
 
-char	*correct_name(char *name)//check_valid_name
+char	*check_valid_name(char *name)
 {
 	char *p;
 	char *tmp;
@@ -27,7 +27,7 @@ char	*correct_name(char *name)//check_valid_name
 	return (new);
 }
 
-void	say_okey(char *fname)//success_msg
+void	success_msg(char *fname)
 {
 	ft_putstr_fd("\033[0;32mThe file : \033[0m", 1);
 	ft_putstr_fd(g_error.filename, 1);
