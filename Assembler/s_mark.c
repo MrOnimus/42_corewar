@@ -20,13 +20,9 @@ size_t		move_marks(t_tokens *read, t_mark *mark)
 	while (read)
 	{
 		if (!read->a1 && !read->a2 && !read->a3)
-		{
-			//printf("1 - %s\n", read->command->cmd);
 			n += weight(read);
-		}
 		else
 		{
-			//printf("2 - %s\n", read->command->cmd);
 			if (read->a1)
 				read->values[0] = mark_position(read->a1, mark) - n;
 			if (read->a2)

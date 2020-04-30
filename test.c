@@ -22,7 +22,7 @@ char		fill_mark(char status)
 	}
 }
 
-int					main(void)//read_instructions
+int					main(void)
 {
 	char		status;
 	char 		mark;

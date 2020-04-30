@@ -87,7 +87,7 @@ int			preread_dotval(int fd, t_out *out, char *line)
 	return (0);
 }
 
-void		read_n_c(int fd, t_out *out)//get_name_n_comment
+void		get_name_n_comment(int fd, t_out *out)
 {
 	char	*line;
 	char	*tmp;
@@ -98,7 +98,6 @@ void		read_n_c(int fd, t_out *out)//get_name_n_comment
 		while (get_next_line(fd, &line) && (!*line || *line == COMMENT_CHAR
 					|| *line == ALT_COMMENT_CHAR))
 			ft_memdel((void**)&line);
-			//printf("out %d\n", ft_strncmp(COMMENT_CMD_STRING, line, c_len));
 		/*	TODO:
 			Отсутствуют чеки на дабл имя/коммент
 			Думаю, что надо, чтобы цикл чекал, чтобы в начале файла были либо пустые строки, либо строки начинающиеся на "."

@@ -12,7 +12,7 @@
 
 #include "libft.h"
 
-int	ft_is_ok(char *s, int (*f)(int))//ft_res_is_true
+int	ft_res_is_true(char *s, int (*f)(int))
 {
 	if (!s)
 		return (0);

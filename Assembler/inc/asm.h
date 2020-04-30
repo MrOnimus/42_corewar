@@ -54,14 +54,14 @@ char			*check_valid_name(char *name);
 t_op			*cmp_commands(char *l, size_t pos);
 size_t			weight(t_tokens *me);
 void			add_tok(t_tokens **toks, t_tokens **curr, t_tokens *new);
-char			del_2mas(char **me);//free_two_dim_array
+char			free_two_dim_array(char **me);
 void			success_msg(char *fname);
-void			read_n_c(int fd, t_out *out);//get_name_n_comment
+void			get_name_n_comment(int fd, t_out *out);
 char			find_sep(char *l, size_t *p);
 void			translation(int fd, t_out **out, char *filename);
 void			del_marks(t_mark *me);
 void			fail_msg(char *fname);
-int				read_code(int fd, t_out *out);
+int				read_instructions(int fd, t_out *out);
 char			check_arg(char **arg, char *type, int *value);
 int				mark_position(char *name, t_mark *marks);
 void			del_output(t_out **out);

@@ -43,7 +43,7 @@ void	write_magic(t_out *out)
 		out->head[--j] = *(cast + i);
 }
 
-static char	check_newline(int fd)//nl_in_eof
+static char	nl_in_eof(int fd)
 {
 	char buf[1];
 
@@ -62,15 +62,15 @@ void		translation(int fd, t_out **out, char *filename)
 {
 	t_out	*output;
 
-	if (check_newline(fd))//check ONE new_line in eof
+	if (nl_in_eof(fd))//check ONE new_line in eof
 		return ;
 	if (!(output = ft_memalloc(sizeof(t_out))))
 	{
 		g_error.id = 20;
 		return ;
 	}
-	read_n_c(fd, output);
-	if (g_error.id || read_code(fd, output))
+	get_name_n_comment(fd, output);
+	if (g_error.id || read_instructions(fd, output))
 	{
 		del_output(&output);
 		return ;

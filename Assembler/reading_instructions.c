@@ -36,8 +36,7 @@ t_tokens		*parse_line(char *line)
 	skip_emptyness(&line);
 	if (*line == COMMENT_CHAR || *line == ALT_COMMENT_CHAR || !*line)
 		return (NULL);
-	//feedback - marker of separator
-	/*
+	/*feedback - marker of separator
 		1 - :
 		2 - %
 		3 - ,
@@ -65,7 +64,7 @@ t_tokens		*parse_line(char *line)
 	return (new);
 }
 
-static t_tokens	*validate(int fd)//validate_n_build_list
+static t_tokens	*validate(int fd)
 {
 	char		*line;
 	t_tokens	*toks;
@@ -76,15 +75,8 @@ static t_tokens	*validate(int fd)//validate_n_build_list
 	curr = NULL;
 	while (get_next_line(fd, &line))
 	{
-		if ((new = parse_line(line)))
-		/**TODO:
-		 * 1. Нужно протетировать функцию parse_line
-		 * 		Можно просто смотреть по кодам ошибки по ходу программы и пытаться их провоцировать
-		**/
-		{
+		if ((new = parse_line(line))) //TODO: Протестировать функцию parse_line
 			add_tok(&toks, &curr, new);
-			//printf("kek\n");
-		}
 		if (g_error.id && (g_error.str_er = line))
 		{
 			line = NULL;
@@ -100,7 +92,7 @@ static t_tokens	*validate(int fd)//validate_n_build_list
 	return (toks);
 }
 
-int				read_code(int fd, t_out *out)//read_instructions
+int				read_instructions(int fd, t_out *out)
 {
 	t_tokens	*read;
 	char		status;
