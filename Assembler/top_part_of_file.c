@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   top_part_of_file.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rdremora <rdremora@student.42.fr>          +#+  +:+       +#+        */
+/*   By: alexandr <alexandr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/06 13:51:11 by immn              #+#    #+#             */
-/*   Updated: 2020/03/10 22:00:29 by rdremora         ###   ########.fr       */
+/*   Updated: 2020/05/01 19:46:50 by alexandr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,10 @@ static void	read_dotval(int fd, t_out *out, char *line, int flag)
 	max_length = !(flag) ? PROG_NAME_LENGTH : COMMENT_LENGTH;
 	if ((name = get_full_dotval(fd, max_length, start + 1, tmp)))
 	{
-		ft_strcpy(out->comm, name);
+		if (flag)
+			ft_strcpy(out->comm, name);
+		else
+			ft_strcpy(out->name, name);
 		ft_strdel(&name);
 	}
 	else

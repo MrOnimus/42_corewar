@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   translate_to_bin.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rdremora <rdremora@student.42.fr>          +#+  +:+       +#+        */
+/*   By: alexandr <alexandr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/05 13:39:54 by immn              #+#    #+#             */
-/*   Updated: 2020/03/10 20:47:40 by rdremora         ###   ########.fr       */
+/*   Updated: 2020/05/01 19:54:02 by alexandr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,6 @@ void		translation(int fd, t_out **out, char *filename)
 		del_output(&output);
 		return ;
 	}
-	// TODO: вывод перенести в отдельную функцию
 	write_magic(output);
 	to_file(output, filename);
 	*out = output;
