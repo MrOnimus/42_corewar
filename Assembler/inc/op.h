@@ -71,7 +71,10 @@ typedef char	t_arg_type;
 
 # define PROG_NAME_LENGTH		(128)
 # define COMMENT_LENGTH			(2048)
-# define COREWAR_EXEC_MAGIC		0xea83f3
+# define COREWAR_EXEC_MAGIC		0xea83f3//from subj
+# define IIOOOOOO				192
+# define OOIIOOOO				48
+# define OOOOIIOO				12
 
 // typedef struct		s_header
 // {

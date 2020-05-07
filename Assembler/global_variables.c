@@ -6,13 +6,13 @@
 /*   By: immn <immn@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/09 11:55:17 by immn              #+#    #+#             */
-/*   Updated: 2020/02/09 15:13:12 by immn             ###   ########.fr       */
+/*   Updated: 2020/02/17 10:11:53 by immn             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
 
-t_op	g_op_tab[NUMBER_OF_COMMAND] =
+t_op	g_op_tab[17] =
 {
 	{"live", 1, {T_DIR}, 1, 10, "alive", 0, 4},
 	{"ld", 2, {T_DIR | T_IND, T_REG}, 2, 5, "load", 1, 4},

@@ -16,29 +16,29 @@ int			main(int ac, char **av)
 {
 	int		fd;
 	char	*file_name;
-	//t_out	*out;
+	t_out	*out;
 
+	file_name = NULL;
 	while (--ac)
 	{
 		g_error.filename = *(++av);
 		fd = open(*av, O_RDONLY);
 		if (fd < 3)
 			g_error.id = 1;
-		else if (!(file_name = correct_name(*av)))
+		else if (!(file_name = check_valid_name(*av)))
 		{
 			g_error.id = 2;
 			close(fd);
 		}
 		else
 		{
-			cook_raw(fd/*, &out, file_name*/);
+			translation(fd, &out, file_name);
 			close(fd);
 		}
-		// printf("%d\n", g_error.id);
 		if (g_error.id)
-			say_error(file_name);
+			fail_msg(file_name);
 		else
-			say_okey(file_name);
+			success_msg(file_name);
 	}
 	return (0);
 }

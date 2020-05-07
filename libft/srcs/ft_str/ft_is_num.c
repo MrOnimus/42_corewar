@@ -12,11 +12,11 @@
 
 #include "libft.h"
 
-int				is_number(char *s)//ft_is_num
+int				ft_is_num(char *s)
 {
 	if (*s == '-' || ft_isdigit(*s))
 	{
-		if (ft_is_ok(s + 1, ft_isdigit))
+		if (ft_res_is_true(s + 1, ft_isdigit))
 			return (1);
 		return (0);
 	}

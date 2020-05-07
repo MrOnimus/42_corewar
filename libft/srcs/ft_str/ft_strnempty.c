@@ -1,20 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strnequ.c                                       :+:      :+:    :+:   */
+/*   ft_strempty.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: immn <immn@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: rdremora <rdremora@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/02/03 16:54:24 by kgarth-o          #+#    #+#             */
-/*   Updated: 2020/02/17 10:16:59 by immn             ###   ########.fr       */
+/*   Created: 2019/12/15 15:23:17 by rdremora          #+#    #+#             */
+/*   Updated: 2020/03/10 21:04:16 by rdremora         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		ft_strnequ(char const *s1, char const *s2, size_t n)
+int		ft_strnempty(char *s, size_t n)
 {
-	if (!s1 || !s2)
-		return (0);
-	return (ft_strncmp(s1, s2, n) ? 0 : 1);
+	while (n > 0)
+	{
+		if (*s != '\t' && *s != ' ')
+			return (0);
+		s++;
+		n--;
+	}
+	return (1);
 }

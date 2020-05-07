@@ -1,20 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strnequ.c                                       :+:      :+:    :+:   */
+/*   ft_memcpy_rev.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: immn <immn@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/02/03 16:54:24 by kgarth-o          #+#    #+#             */
-/*   Updated: 2020/02/17 10:16:59 by immn             ###   ########.fr       */
+/*   Created: 2020/02/24 16:35:34 by immn              #+#    #+#             */
+/*   Updated: 2020/02/24 16:36:56 by immn             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		ft_strnequ(char const *s1, char const *s2, size_t n)
+void	*ft_memcpy_rev(void *dst, const void *src, size_t n)
 {
-	if (!s1 || !s2)
-		return (0);
-	return (ft_strncmp(s1, s2, n) ? 0 : 1);
+	unsigned char	*new;
+	unsigned char	*from;
+
+	new = (unsigned char*)dst;
+	from = (unsigned char*)src;
+	while (n-- > 0)
+		*(new++) = from[n];
+	return (dst);
 }

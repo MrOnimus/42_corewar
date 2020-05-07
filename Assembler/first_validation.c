@@ -1,18 +1,18 @@
 /* ************************************************************************** */
-/*																			*/
-/*														:::	  ::::::::   */
-/*   02.c											   :+:	  :+:	:+:   */
-/*													+:+ +:+		 +:+	 */
-/*   By: immn <immn@student.42.fr>				  +#+  +:+	   +#+		*/
-/*												+#+#+#+#+#+   +#+		   */
-/*   Created: 2020/02/04 13:12:27 by immn			  #+#	#+#			 */
-/*   Updated: 2020/02/04 13:16:01 by immn			 ###   ########.fr	   */
-/*																			*/
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   first_validation.c                                 :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: immn <immn@student.42.fr>                  +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/02/11 16:34:34 by immn              #+#    #+#             */
+/*   Updated: 2020/02/20 16:20:05 by immn             ###   ########.fr       */
+/*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
 
-char	*correct_name(char *name)//check_valid_name
+char	*check_valid_name(char *name)
 {
 	char *p;
 	char *tmp;
@@ -27,7 +27,7 @@ char	*correct_name(char *name)//check_valid_name
 	return (new);
 }
 
-void	say_okey(char *fname)//success_msg
+void	success_msg(char *fname)
 {
 	ft_putstr_fd("\033[0;32mThe file : \033[0m", 1);
 	ft_putstr_fd(g_error.filename, 1);
