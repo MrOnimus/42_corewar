@@ -8,5 +8,6 @@ const char	g_error[NUM_ERR][ERR_LENGTH] =
 	"Memory alocation failed.",
 	"Error argument after flag -n.",
 	"???",
-	"player"
+	"player",
+	"bad cursor"
 };

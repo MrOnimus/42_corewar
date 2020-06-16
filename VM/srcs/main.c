@@ -1,4 +1,23 @@
 #include "corewar.h"
+t_cursor	*init_cursor(t_champion *champ, int place)
+{
+	t_cursor		*cursor;
+	static int	cursor_id;
+
+	if (!(cursor = (t_cursor *)ft_memalloc(sizeof(t_cursor))))
+		put_error(6);
+	cursor->id = ++cursor_id;
+	cursor->carry = 0;
+	cursor->op_code = 0;//last code?
+	cursor->last_live = 0;
+	cursor->cycles_to_exec = 0;
+	cursor->place = place;
+	cursor->next = NULL;
+	cursor->reg[0] = -(champ->number);
+	cursor->champion = champ;
+	return (cursor);
+}
+
 
 int main (int argc, char** argv)
 {
@@ -31,10 +50,18 @@ int main (int argc, char** argv)
 	//@TODO: field->last_alive
 	//@TODO: Загнать в минус или зафолсить флаги, которые не будут использоваться (будут ли другие флаги, кроме дампа и номера?)
 	print_logo();
-	//@TODO: Инициализация кареток по структуре
+	// Инициализация кареток по структуре
+	//in a loop
+	init_cursor(NULL, NULL);//1 champion, place - расположение в памяти. Этой функцией инициализируем все каретки
+
 	//@TODO: функция для печати арены в каждый момент времени
+
+
 	//Игра продолжается до тех пор пока все каретки не умрут, либо пока количество циклов не достигнет максимума, либо dump
 	intro(champions, num);
+	execute(&field);
 	print_players(champions, num);
+	//печатаем последнгего выжившего
+	//очищаем память
 	return (0);
 }

@@ -1,6 +1,6 @@
 #ifndef COMMANDS_H
 
-# define NUM_ERR 7
+# define NUM_ERR 8
 # define ERR_LENGTH 100
 # include <stdio.h>
 # include "op.h"
@@ -19,17 +19,7 @@ typedef struct			s_champion
 }						t_champion;
 
 
-typedef struct			s_vm
-{
-	int 				count_players;
-	char				*arena;
-	t_champion			*player;
-	int					dump;
-	int					much_players;
-	int					last_alive;
-	char				*name_of_winner;
-	int					to_die;	
-}						t_vm;
+
 
 typedef struct			s_cursor
 {
@@ -39,13 +29,31 @@ typedef struct			s_cursor
 	int					last_live;
 	int					cycles_to_exec;
 	int					args_types[3];
-	int					pc;
+	int					place;
 	int					step;
 	int					reg[REG_NUMBER];
-	t_champion			*player;
+	t_champion			*champion;
 	struct s_cursor		*next;
 }						t_cursor;
 //struct from braznik
+
+
+typedef struct			s_vm
+{
+	int 				count_players;
+	char				*arena;
+	t_champion			*player;
+	int					dump;
+	int					much_players;
+	int					last_alive;
+	char				*name_of_winner;
+	int					to_die;
+	int					cursor_num;
+	int					cycle;
+	int					cycles_after_check;
+	int					cycles_to_die;
+	t_cursor			*cursors;
+}						t_vm;
 
 
 extern const char		g_error[NUM_ERR][ERR_LENGTH];
@@ -63,4 +71,6 @@ void					print_players (t_champion		**champions, int num);
 //print
 void					print_logo();
 void 					intro(t_champion **champions, int num);
+void					execute(t_vm *vm);
+
 #endif
