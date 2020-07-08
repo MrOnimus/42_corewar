@@ -5,8 +5,8 @@ void create_player(t_champion** champions, int num, char* str)
 	champions[num - 1] = ft_memalloc(sizeof(t_champion));
 	champions[num - 1]->number = num;
 	champions[num - 1]->reg[1] = -num;
-<<<<<<< HEAD
-	champions[num - 1]->filename = str;
+	champions[num - 1]->filename = is_filename(str, ".cor");
+	champions[num - 1]->name = ft_strsub(str, 0, ft_strlen(str) - 4);
 	/*
 		Here we init all players parameters from file
 		fd
@@ -17,23 +17,6 @@ void create_player(t_champion** champions, int num, char* str)
 		get and check comment
 		give colour?
 		get code
-		
-
-=======
-	champions[num - 1]->filename = is_filename(str, ".cor");
-	champions[num - 1]->name = ft_strsub(str, 0, ft_strlen(str) - 4);
-	
-	/*
-		Here we init all players parameters from file
-	fd
-	check magic header
-	long of program name - lseek
-	check size
-	get and check name
-	get and check comment
-	give colour?
-	get code
->>>>>>> origin/feature/alex/init_arena
 	*/
 }
 
@@ -45,12 +28,10 @@ int get_dump(int argc, char** argv)
 	i = 0;
 	dump = 0;
 	while (++i < argc)
-<<<<<<< HEAD
+	{
 		if (ft_strequ(argv[i], "-dump"))
-=======
-		if (!ft_strequ(argv[i], "-dump"))
->>>>>>> origin/feature/alex/init_arena
-			dump = ft_atoi(argv[i]);		
+		dump = ft_atoi(argv[i]);
+	}
 	return dump;
 }
 

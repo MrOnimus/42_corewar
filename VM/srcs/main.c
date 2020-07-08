@@ -1,5 +1,5 @@
 #include "corewar.h"
-<<<<<<< HEAD
+
 t_cursor	*init_cursor(t_champion *champ, int place)
 {
 	t_cursor		*cursor;
@@ -19,8 +19,6 @@ t_cursor	*init_cursor(t_champion *champ, int place)
 	return (cursor);
 }
 
-=======
->>>>>>> origin/feature/alex/init_arena
 
 int main (int argc, char** argv)
 {
@@ -48,7 +46,6 @@ int main (int argc, char** argv)
 	field.dump = get_dump(argc, argv);
 	printf("Dump: %d.\n", field.dump);
 	//here we get player struct with name of files, reg1 and num of player
-<<<<<<< HEAD
 	set_parameters(&field, champions, num);
 	//@TODO: Help function
 	//@TODO: field->last_alive
@@ -67,11 +64,5 @@ int main (int argc, char** argv)
 	print_players(champions, num);
 	//печатаем последнгего выжившего
 	//очищаем память
-=======
-
-	set_parameters(&field, champions, num);
-
-	print_players(champions, num);
->>>>>>> origin/feature/alex/init_arena
 	return (0);
 }
