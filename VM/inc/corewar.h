@@ -18,26 +18,15 @@ typedef struct			s_champion
 {
 	int					number;
 	char				*name;
-<<<<<<< HEAD
-	char				*filename;
-	char				*comment;
-	int					code_size;
-	int					reg[REG_NUMBER + 1];
-=======
 	int					filename;
 	char				*comment;
 	int					reg[REG_NUMBER + 1];
 	char				*code;
 	int					code_range;
 	unsigned int		magic;
->>>>>>> origin/feature/alex/init_arena
 
 	struct s_champion	*next;
 }						t_champion;
-
-
-<<<<<<< HEAD
-
 
 typedef struct			s_cursor
 {
@@ -59,19 +48,12 @@ typedef struct			s_cursor
 typedef struct			s_vm
 {
 	int 				count_players;
-	char				*arena;
-=======
-typedef struct			s_vm
-{
-	int 				count_players;
 	char				arena[MEM_SIZE];
->>>>>>> origin/feature/alex/init_arena
 	t_champion			*player;
 	int					dump;
 	int					much_players;
 	int					last_alive;
 	char				*name_of_winner;
-<<<<<<< HEAD
 	int					to_die;
 	int					cursor_num;
 	int					cycle;
@@ -91,16 +73,16 @@ void					create_player(t_champion** champions, int num, char* str);
 void					set_parameters(t_vm *field, t_champion **champions, int num);
 
 
-//debug functions
+/*
+*debug functions
+*/
 void					print_players (t_champion		**champions, int num);
 //print
 void					print_logo();
 void 					intro(t_champion **champions, int num);
 void					execute(t_vm *vm);
 
-=======
-	int					to_die;	
-}						t_vm;
+
 
 /*
 *error func
@@ -126,9 +108,4 @@ int						get_dump(int argc, char** argv);
 int 					get_num_of_players(int argc, char **argv);
 void					set_parameters(t_vm *field, t_champion **champions, int num);
 
-/*
-*debug functions
-*/
-void					print_players (t_champion		**champions, int num);
->>>>>>> origin/feature/alex/init_arena
 #endif
