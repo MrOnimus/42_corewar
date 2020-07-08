@@ -3,42 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   top_part_of_file.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: immn <immn@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: rdremora <rdremora@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/06 13:51:11 by immn              #+#    #+#             */
-/*   Updated: 2020/02/10 15:48:31 by immn             ###   ########.fr       */
+/*   Updated: 2020/03/10 22:00:29 by rdremora         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
 
-void	del_3_str(char **s1, char **s2, char **s3) // От этого костыля стопроц надо избавляться, надо придумать что-то красивое
-{
-	if (s1)
-		ft_strdel(s1);
-	if (s2)
-		ft_strdel(s2);
-	if (s3)
-		ft_strdel(s3);
-}
-
-int		empty(char *s, size_t n)//Эту нужно в либу закинуть
-{
-	while (n > 0)
-	{
-		if (*s != '\t' && *s != ' ')
-			return (0);
-		s++;
-		n--;
-	}
-	return (1);
-}
-
-static char	*give_full_name(int fd, size_t max_length, char *start, char *tmp)//Эту желательно разбить или сделать проще//save_that_attr
+static char	*give_full_name(int fd, size_t max_length, char *start, char *tmp)//save_that_attr
 {
 	char	*end;
 	char	*str;
-	char	*tmp2;
 
 	if ((end = ft_strchr(start, '"')))
 		str = ft_strsub(start, 0, end - start);
@@ -46,117 +23,95 @@ static char	*give_full_name(int fd, size_t max_length, char *start, char *tmp)//
 	{
 		str = ft_strdup(start);
 		while (get_next_line(fd, &start) && !(end = ft_strchr(start, '"')))
-		{
-			tmp = str;
-			str = ft_strjoin(str, start);
-			del_3_str(&start, &tmp, NULL);
-		}
+			str = ft_strjoin_free(str, start, 3);
 		tmp = ft_strsub(start, 0, end - start);
-		tmp2 = str;
-		str = ft_strjoin(str, tmp);
-		del_3_str(&tmp, &tmp2, &start);
+		str = ft_strjoin_free(str, tmp, 3);
+		ft_strdel(&start);
 	}
-	if (end && ft_strlen(str) <= max_length)
+	if (end && ft_strlen(str) <= max_length && check_for_comment(end + 1) != -1)
 		return (str);
 	ft_strdel(&str);
-	g_error.id = end ? 17 : 3;
+	if (check_for_comment(end + 1) == -1)
+		g_error.id = 3;
+	else
+		g_error.id = end ? 17 : 3;
 	return (NULL);
 }
 
-static void	read_name(int fd, t_out *out, char *line)//read_name_n_com
+static void	read_dotval(int fd, t_out *out, char *line, int flag)//read_name_or_com if flag == 0 its name, else - comment
 {
 	char	*start;
 	char	*name;
 	char	*tmp;
+	int		max_length;
 
 	tmp = NULL;
-	if ((!(start = ft_strchr(line, '"')) || !empty(line, start - line))
-		&& (g_error.id = 4))
+	if ((!(start = ft_strchr(line, '"')) || !ft_strnempty(line, start - line))
+		&& (g_error.id = 4 + (flag - 1)))
 		return ;
-	if ((name = give_full_name(fd, COMMENT_LENGTH, start + 1, tmp)))
+	max_length = !(flag) ? PROG_NAME_LENGTH : COMMENT_LENGTH;
+	if ((name = give_full_name(fd, max_length, start + 1, tmp)))
 	{
 		ft_strcpy(out->comm, name);
 		ft_strdel(&name);
 	}
 	else
-		g_error.id += 1;
-	out->n_exist = 1;
-}
-
-static void	read_comment(int fd, t_out *out, char *line)
-{
-	char	*start;
-	char	*name;
-	char	*tmp;
-
-	tmp = NULL;
-	if ((!(start = ft_strchr(line, '"')) || !empty(line, start - line))
-		&& (g_error.id = 4))
-		return ;
-	if ((name = give_full_name(fd, COMMENT_LENGTH, start + 1, tmp)))
-	{
-		ft_strcpy(out->comm, name);
-		ft_strdel(&name);
-	}
+		g_error.id += flag;
+	if (!flag)
+		out->n_exist = 1;
 	else
-		g_error.id += 1;
-	out->c_exist = 1;
+		out->c_exist = 1;
 }
 
-void		read_n_c(int fd, t_out *out)//get_name_n_comment
+int			preread_dotval(int fd, t_out *out, char *line)
 {
-	char	*line;
 	size_t	n_len;
 	size_t	c_len;
 
 	n_len = ft_strlen(NAME_CMD_STRING);
 	c_len = ft_strlen(COMMENT_CMD_STRING);
+	if (line && !ft_strncmp(COMMENT_CMD_STRING, line, c_len))
+	{
+		if (out->c_exist && (g_error.id = 6) && del_str(&line))
+			return (-1);
+		read_dotval(fd, out, line + c_len, 1);
+		return (1);
+	}
+	else if (line && !ft_strncmp(NAME_CMD_STRING, line, n_len))
+	{
+		if (out->n_exist && (g_error.id = 5) && del_str(&line))
+			return (-1);
+		read_dotval(fd, out, line + n_len, 0);
+		return (1);
+	}
+	return (0);
+}
+
+void		read_n_c(int fd, t_out *out)//get_name_n_comment
+{
+	char	*line;
+	char	*tmp;
+
 	line = NULL;
 	while (!out->c_exist || !out->n_exist)
 	{
-		while (get_next_line(fd, &line) && (!*line || *line == COMMENT_CHAR))
+		while (get_next_line(fd, &line) && (!*line || *line == COMMENT_CHAR
+					|| *line == ALT_COMMENT_CHAR))
 			ft_memdel((void**)&line);
 			//printf("out %d\n", ft_strncmp(COMMENT_CMD_STRING, line, c_len));
-		/*
-			тут две одинаковые проверки
-			желательно их как-то объединить.
-			плюс функци read_comment и read_name сделать одной функцией с до параметром
-			а то нахер нужны две функции, которые только захардкоженными элементами отличаются
-
-			Это был первы таск
-
-			Второй таск - основной цикл из этой функции (while (!out->c_exist || !out->n_exist))
-			как бы не очень работает
-			Если мы сначала зададим имя, а потом коммент, или наоборот, то цикл сразу закончится
-			При этом потом можно будет задать имя еще раз и коммент тоже - никаких проверок об этом уже не будет
-
+		/*	TODO:
+			Отсутствуют чеки на дабл имя/коммент
 			Думаю, что надо, чтобы цикл чекал, чтобы в начале файла были либо пустые строки, либо строки начинающиеся на "."
-			Можно обработать и пробелы перед строкой, а то тут через strcmp сравнивается идентичность, а про пробелы вначале ничего
-			Надо бы вообще их игнорить, думаю. Но это не точно. Короче именно момент с пробелами спорный, а остальное надо бы сделать.
-
 
 			Пока что оставляю так как было в оригинале
-
-
-			Еще надо, чтобы писало не о первой попавшейся ошибке, а об обеих
-			Типа если дублируется и имя и коммент, то чтобы писало и о первом и о втором
-
-			Еще в строке с именем\комментом если написать что-то после кавычек - не воспримет как ошибку. Тоже надо исправить
 		*/
-		if (line && !ft_strncmp(COMMENT_CMD_STRING, line, c_len))
-		{
-			if (out->c_exist && (g_error.id = 6) && del_str(&line))
-				return ;
-			read_comment(fd, out, line + c_len);
-		}
-		else if (line && !ft_strncmp(NAME_CMD_STRING, line, n_len))
-		{
-			if (out->n_exist && (g_error.id = 5) && del_str(&line))
-				return ;
-			read_name(fd, out, line + n_len);
-		}
-		else if (!line && (g_error.id = out->c_exist ? 7 : 8) && del_str(&line))
+		tmp = ft_strtrim(line);
+		if (preread_dotval(fd, out, tmp) == 1)
+			;
+		else if (!line && (g_error.id = out->c_exist ? 7 : 8) && del_str(&line)
+				&& del_str(&tmp))
 			return ;
+		ft_strdel(&tmp);
 		ft_strdel(&line);
 	}
 }

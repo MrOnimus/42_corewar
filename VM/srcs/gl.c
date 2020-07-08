@@ -9,5 +9,12 @@ const char	g_error[NUM_ERR][ERR_LENGTH] =
 	"Error argument after flag -n.",
 	"???",
 	"player",
+<<<<<<< HEAD
 	"bad cursor"
+=======
+	"It's not player",
+	"Error magic header",
+	"Error read file",
+	"NULL set incorrectly"
+>>>>>>> origin/feature/alex/init_arena
 };

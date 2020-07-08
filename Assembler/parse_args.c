@@ -6,13 +6,13 @@
 /*   By: immn <immn@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/09 13:55:23 by immn              #+#    #+#             */
-/*   Updated: 2020/02/09 19:49:43 by immn             ###   ########.fr       */
+/*   Updated: 2020/02/17 10:14:03 by immn             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
 
-void		rebase_args(t_tokens *new, int n_arg, char **args)
+void		rebase_args(t_tokens *new, int n_arg, char **args)//free_bad_args
 {
 	if (args[0] && !args[0][0])
 	{
@@ -96,7 +96,7 @@ char			parse_args(char *line, t_tokens *new)//parse_arguments
 	char	**args;
 	int		n_arg;
 
-	check_for_comment(line);
+	remove_comment(line);
 	n_arg = 0;
 	args = ft_strsplit(line, SEPARATOR_CHAR);
 	while (args[n_arg])

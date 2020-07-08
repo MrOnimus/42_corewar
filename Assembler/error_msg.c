@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   error_msg.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: immn <immn@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: rdremora <rdremora@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/02 14:21:18 by immn              #+#    #+#             */
-/*   Updated: 2020/02/09 20:03:24 by immn             ###   ########.fr       */
+/*   Updated: 2020/03/10 21:33:02 by rdremora         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ static char	*g_msg[21] = { //g_err_handler  -  need change msgs
 	"\033[31m champion comment is too long \n\033[0m",						//18
 	"\033[31m champion has no command \n\033[0m",							//19
 	"\033[31m; can't allocate memory\n\033[0m"								//20
- };
+};
 
 void		say_error(char *fname)//fail_msg
 {
@@ -43,7 +43,10 @@ void		say_error(char *fname)//fail_msg
 	ft_putstr_fd(g_msg[g_error.id], 2);
 	if (g_error.id > 9 && g_error.id < 16)
 		ft_putendl_fd(g_error.str_er, 2);
+
 	g_error.id = 0;
+
 	ft_strdel(&g_error.str_er);
+	if (fname)
 	ft_strdel(&fname);
 }

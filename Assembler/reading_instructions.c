@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   reading_instructions.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: immn <immn@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: rdremora <rdremora@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/08 23:04:25 by immn              #+#    #+#             */
-/*   Updated: 2020/02/10 15:50:38 by immn             ###   ########.fr       */
+/*   Updated: 2020/03/10 21:59:35 by rdremora         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
 
-t_op		*check_command(char *l, size_t pos)//cmp_commands
+t_op			*check_command(char *l, size_t pos)//cmp_commands
 {
 	int		i;
 
@@ -27,14 +27,14 @@ t_op		*check_command(char *l, size_t pos)//cmp_commands
 	return (NULL);
 }
 
-t_tokens	*check_line(char *line)//parse_line
+t_tokens		*check_line(char *line)//parse_line
 {
 	t_tokens	*new;
 	size_t		pos;
 	char		feedback;
 
 	skip_emptyness(&line);
-	if (*line == COMMENT_CHAR || !*line)
+	if (*line == COMMENT_CHAR || *line == ALT_COMMENT_CHAR || !*line)
 		return (NULL);
 	//feedback - marker of separator
 	/*
@@ -44,7 +44,7 @@ t_tokens	*check_line(char *line)//parse_line
 		0 - prblm
 	*/
 	if (!(feedback = find_sep(line, &pos)) || (feedback == 3))
-	{ 
+	{
 		return ((g_error.id = 10) ? NULL : NULL);
 	}
 	if (!(new = ft_memalloc(sizeof(t_tokens))))
@@ -52,14 +52,10 @@ t_tokens	*check_line(char *line)//parse_line
 	if (feedback == 1)
 	{
 		new->mark = ft_strsub(line, 0, pos);
-		//printf("%s\n", new->mark);
 		line += pos + 1;
 		skip_emptyness(&line);
 		if ((feedback = find_sep(line, &pos)) == 0)//for lable
-		{
-			//printf("1111 = %s\n", line);
 			return (new);
-		}
 		if (feedback != 2)
 			return (free_return(new));
 	}
@@ -80,55 +76,51 @@ static t_tokens	*validate(int fd)//validate_n_build_list
 	curr = NULL;
 	while (get_next_line(fd, &line))
 	{
-		if ((new = check_line(line)))//					need to testing check_line!!!!
-									//					МОжно просто смотреть по кодам ошибки по ходу программы - и пытаться их провоцировать
-
-
-/************endwhile:			;     lkjrflakwjrglkaejrg   - Вот такая строчка выдает ошибку
- * 							То есть альтернативный комментарий после лейбла не отрабатыват
-*/
-
-
-
-	// 		add_tok(&toks, &curr, new);
+		if ((new = check_line(line)))
+		/**TODO:
+		 * 1. Нужно протетировать функцию check_line
+		 * 		Можно просто смотреть по кодам ошибки по ходу программы и пытаться их провоцировать
+		**/
 		{
+			add_tok(&toks, &curr, new);
 			//printf("kek\n");
 		}
-	// 	if (g_error.id && (g_error.str_er = line))
-	// 	{
-	// 		line = NULL;
-	// 		del_tokens(toks);
-	// 		return (NULL);
-	// 	}
+		if (g_error.id && (g_error.str_er = line))
+		{
+			line = NULL;
+			del_tokens(toks);
+			return (NULL);
+		}
 		ft_strdel(&line);
 	}
-	// if (curr)
-	// 	curr->next = NULL;
-	// if (!toks && (g_error.id = 19))
-	// 	return (NULL);
+	if (curr)
+		curr->next = NULL;
+	if (!toks && (g_error.id = 19))
+		return (NULL);
+	// TODO: Надо бы попринтить токены, чтобы быть уверенным.
 	return (toks);
 }
 
-int					read_code(int fd, t_out *out)//read_instructions
+int				read_code(int fd, t_out *out)//read_instructions
 {
 	t_tokens	*read;
-	// t_mark		*mark;
-	// char		status;
+	char		status;
+	t_mark		*mark;
 
-	if (!(read = validate(fd)))
+	if (!(read = validate(fd)))//token chain
 		return (1);
-	// status = 0;
-	// mark = fill_mark(read, status);
-	// if (status == 1)
-	// {
-	// 	del_marks(mark);
-	// 	del_tokens(read);
-	// 	return (1);
-	// }
-	// read = del_empty(read);
-	// out->code_size_int = replace_marks(read, mark);
-	// code_to_bytes(read, out);
-	// out->c_exist = 1;
-	// del_tokens(read);
-	// return (0);
+	status = 0;
+	mark = fill_mark(read, status);
+	if (status == 1)// TODO: Эта часть кода не отработает. Нцужно передавать указатель - Передалать надо бэ
+	{
+		del_marks(mark);
+		del_tokens(read);
+		return (1);
+	}
+	read = del_empty(read);//Получили лист с валидными командами и их параметрами
+	out->code_size_int = replace_marks(read, mark);
+	code_to_bytes(read, out);// TODO: Эту функцию я бы вытащил отдельно
+	out->c_exist = 1;
+	del_tokens(read);
+	return (0);
 }
