@@ -17,7 +17,7 @@ int	is_filename(char *filemane, char *ext)
 	return (0);
 }
 
-void convert_field(char *field)
+char *convert_field(char *field)
 {
     size_t  len;
     size_t  i;
@@ -61,7 +61,7 @@ void read_null(int fd)
 		put_error(10);
 }
 
-void read_intfield(inf fd, int *intfield, size_t size)
+void read_intfield(int fd, int *intfield, size_t size)
 {
 	char *buff;
 
@@ -101,11 +101,11 @@ void read_champs(t_champion *champ, char *filename)
 	if (!(ft_strempty(buff)))
 		put_error(10);*/
 
-    read_intfield(fd, &(champ->code_range), 4)
+    read_intfield(fd, &(champ->code_range), 4);
 	/*read(fd, buff, 4);								//check code_range
 	champ->code_range = ft_strisnumeric(buff);			//это не точно!!*/
 
-    read_strfield(fd, champ->comment, COMMENT_LENGTH)
+    read_strfield(fd, champ->comment, COMMENT_LENGTH);
 	/*if (!(comment = malloc(COMMENT_LENGTH)))			//check comment
 		put_error(3);
 	read(fd, comment, COMMENT_LENGTH);
@@ -116,7 +116,7 @@ void read_champs(t_champion *champ, char *filename)
 	if (buff != NULL)
 		put_error(10);*/
 
-    read_strfield(fd, champ->code, CHAMP_MAX_SIZE)      // TODO: Maybe we should read not the MAX_SIZE, but the champ->code_range
+    read_strfield(fd, champ->code, CHAMP_MAX_SIZE);      // TODO: Maybe we should read not the MAX_SIZE, but the champ->code_range
 	/*if (!(code = malloc(CHAMP_MAX_SIZE)))				//check code
 		put_error(3);
 	read(fd, code, CHAMP_MAX_SIZE);

@@ -44,7 +44,7 @@ typedef struct			s_vm
 	t_champion			*player;
 	int					dump;
 	int					much_players;
-	t_champion			last_alive;
+	int				last_alive;
 	char				*name_of_winner;
 	int					to_die;
 	int					cursor_num;

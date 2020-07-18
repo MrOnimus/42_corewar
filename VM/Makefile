@@ -6,14 +6,14 @@ OBJS = $(patsubst srcs/%.c,objs/%.o,$(SRCS))
 
 FLAGS = #-Wall -Wextra -Werror
 
-INCS = ./incs ../libft/incs
+INCS = ./incs ../incs 
 
 LIBRARY = ../libft
 
 all: $(NAME)
 
 $(NAME): $(OBJS)
-	@gcc -o $(NAME) $(OBJS) -I $(INCS) -L $(LIBRARY) -lft
+	@gcc -o $(NAME) $(OBJS) -L $(LIBRARY) -I $(INCS) -lft
 
 objs/%.o: srcs/%.c
 	@mkdir -p objs

@@ -27,7 +27,7 @@ t_vm *init_vm()
         put_error(3);
     vm->count_players = 0;
     vm->player = NULL;
-    vm->last_alive = NULL;
+    vm->last_alive = 0;
     vm->cycle = 0;
     vm->cycles_after_check = 0;
     vm->cycles_to_die = CYCLE_TO_DIE;
