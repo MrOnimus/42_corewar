@@ -167,6 +167,7 @@ int					ft_countchars(int n);
 char				*ft_intclear(const char *str, int i, int j);
 char				*ft_ltoa_base(long long int n, int base);
 int					ft_nbrlen_base(unsigned long long int nbr, int base);
+int                 ft_atoi_base(const char *str, int str_base);
 
 /*
 ** BITS
@@ -218,6 +219,7 @@ char				*ft_strupcase(char *str);
 int					ft_strchr_by_index(char *str, int c);
 int					ft_word_count(char const *s, char c);
 int					ft_count_words(char **arr);
+int 	            ft_strempty(const char *s);
 int					ft_memcmp(const void *str1, const void *str2, size_t n);
 void				*ft_memchr (const void *arr, int c, size_t n);
 void				*ft_memmove (void *destination, const void *source,

@@ -15,9 +15,9 @@ CC				= 	gcc
 SRCD			=	./srcs/
 OBJD			=	./objs/
 FLAGS			=	-Wall -Wextra -Werror -O3 -Ofast
-INCLUDES_D		=	includes/
+INCD			=	./incs/
 
-_INCLUDES		=	libft.h					get_next_line.h					ft_printf.h
+_INC			=	libft.h					get_next_line.h					ft_printf.h
 
 _MEM_FS			=	ft_memchr.c				ft_memccpy.c					ft_memmove.c			\
 					ft_memcpy.c				ft_realloc.c					ft_memcmp.c				\
@@ -45,7 +45,8 @@ _TYPES_FS		=	ft_atoi.c				ft_isblank.c					ft_islower.c			\
 					ft_itoa_pointer.c		ft_itoa_roundd.c				ft_itoa_u.c				\
 					ft_strisnumeric.c		ft_strislowercase.c				ft_strisalpha.c			\
 					ft_checklong.c			ft_chjoinstr.c					ft_countchars.c			\
-					ft_intclear.c			ft_ltoa_base.c					ft_nbrlen_base.c		
+					ft_intclear.c			ft_ltoa_base.c					ft_nbrlen_base.c		\
+					ft_atoi_base.c
 
 _LIST_FS		=	ft_lstiter.c			ft_lstmap.c						ft_lstdelone.c			\
 					ft_lstdel.c				ft_lstadd.c						ft_lstnew.c				\
@@ -70,7 +71,7 @@ _STR_FS			=	ft_strnstr.c			ft_strcmp.c						ft_strncmp.c			\
 					ft_strlowcase.c			ft_how_mutch_search_in_str.c 	ft_strclen.c			\
 					ft_strjoin_flagclear.c	ft_strjoin_po.c					ft_strnchr.c			\
 					ft_strrev.c				del_str.c						ft_res_is_true.c		\
-					ft_is_num.c
+					ft_is_num.c				ft_strempty.c
 
 _STACK_FS		=	ft_free_stack.c			ft_pop_stack.c					ft_print_stack.c		\
 					ft_stack_isempty.c 		ft_push_stack.c
@@ -138,57 +139,57 @@ $(NAME): $(OBJB)
 $(OBJD)%.o : $(SRCD)ft_math/%.c $(INCLUDES) Makefile
 	@printf "\r\033[K$(CGREEN)Compiling$(NC): $<"
 	@mkdir -p $(OBJD)
-	@$(CC) $(CFLAGS) -o $@ -c $< -I$(INCLUDES_D)
+	@$(CC) $(CFLAGS) -o $@ -c $< -I$(INCD)
 
 $(OBJD)%.o : $(SRCD)ft_btree/%.c $(INCLUDES) Makefile
 	@printf "\r\033[K$(CGREEN)Compiling$(NC): $<"
 	@mkdir -p $(OBJD)
-	@$(CC) $(CFLAGS) -o $@ -c $< -I$(INCLUDES_D)
+	@$(CC) $(CFLAGS) -o $@ -c $< -I$(INCD)
 
 $(OBJD)%.o : $(SRCD)ft_types/%.c $(INCLUDES) Makefile
 	@printf "\r\033[K$(CGREEN)Compiling$(NC): $<"
 	@mkdir -p $(OBJD)
-	@$(CC) $(CFLAGS) -o $@ -c $< -I$(INCLUDES_D)
+	@$(CC) $(CFLAGS) -o $@ -c $< -I$(INCD)
 
 $(OBJD)%.o : $(SRCD)ft_list/%.c $(INCLUDES) Makefile
 	@printf "\r\033[K$(CGREEN)Compiling$(NC): $<"
 	@mkdir -p $(OBJD)
-	@$(CC) $(CFLAGS) -o $@ -c $< -I$(INCLUDES_D)
+	@$(CC) $(CFLAGS) -o $@ -c $< -I$(INCD)
 
 $(OBJD)%.o : $(SRCD)ft_stack/%.c $(INCLUDES) Makefile
 	@printf "\r\033[K$(CGREEN)Compiling$(NC): $<"
 	@mkdir -p $(OBJD)
-	@$(CC) $(CFLAGS) -o $@ -c $< -I$(INCLUDES_D)
+	@$(CC) $(CFLAGS) -o $@ -c $< -I$(INCD)
 
 $(OBJD)%.o : $(SRCD)ft_mem/%.c $(INCLUDES) Makefile
 	@printf "\r\033[K$(CGREEN)Compiling$(NC): $<"
 	@mkdir -p $(OBJD)
-	@$(CC) $(CFLAGS) -o $@ -c $< -I$(INCLUDES_D)
+	@$(CC) $(CFLAGS) -o $@ -c $< -I$(INCD)
 
 $(OBJD)%.o: $(SRCD)ft_io/%.c $(INCLUDES) Makefile
 	@printf "\r\033[K$(CGREEN)Compiling$(NC): $<"
 	@mkdir -p $(OBJD)
-	@$(CC) $(CFLAGS) -o $@ -c $< -I$(INCLUDES_D)
+	@$(CC) $(CFLAGS) -o $@ -c $< -I$(INCD)
 
 $(OBJD)%.o: $(SRCD)ft_str/%.c $(INCLUDES) Makefile
 	@printf "\r\033[K$(CGREEN)Compiling$(NC): $<"
 	@mkdir -p $(OBJD)
-	@$(CC) $(CFLAGS) -o $@ -c $< -I$(INCLUDES_D)
+	@$(CC) $(CFLAGS) -o $@ -c $< -I$(INCD)
 
 $(OBJD)%.o: $(SRCD)ft_printf/%.c $(INCLUDES) Makefile
 	@printf "\r\033[K$(CGREEN)Compiling$(NC): $<"
 	@mkdir -p $(OBJD)
-	@$(CC) $(CFLAGS) -o $@ -c $< -I$(INCLUDES_D)
+	@$(CC) $(CFLAGS) -o $@ -c $< -I$(INCD)
 
 $(OBJD)%.o: $(SRCD)ft_arr/%.c $(INCLUDES) Makefile
 	@printf "\r\033[K$(CGREEN)Compiling$(NC): $<"
 	@mkdir -p $(OBJD)
-	@$(CC) $(CFLAGS) -o $@ -c $< -I$(INCLUDES_D)
+	@$(CC) $(CFLAGS) -o $@ -c $< -I$(INCD)
 
 $(OBJD)%.o: $(SRCD)math/%.c $(INCLUDES) Makefile
 	@printf "\r\033[K$(CGREEN)Compiling$(NC): $<"
 	@mkdir -p $(OBJD)
-	@$(CC) $(CFLAGS) -o $@ -c $< -I$(INCLUDES_D)
+	@$(CC) $(CFLAGS) -o $@ -c $< -I$(INCD)
 clean:
 	@rm -rf $(OBJB)
 	@echo "$(RED)Cleaning$(NC): $(L_BLUE)$(NAME)$(NC)"

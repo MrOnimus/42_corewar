@@ -1,18 +1,10 @@
 #ifndef COMMANDS_H
 
-<<<<<<< HEAD
-# define NUM_ERR 8
-# define ERR_LENGTH 100
-# include <stdio.h>
-# include "op.h"
-# include "../../libft/includes/libft.h"
-=======
 # define NUM_ERR 11
 # define ERR_LENGTH 100
 # include <stdio.h>
+# include <stdlib.h>
 # include "op.h"
-# include <libft.h>
->>>>>>> origin/feature/alex/init_arena
 
 typedef struct			s_champion
 {
@@ -52,7 +44,7 @@ typedef struct			s_vm
 	t_champion			*player;
 	int					dump;
 	int					much_players;
-	int					last_alive;
+	t_champion			last_alive;
 	char				*name_of_winner;
 	int					to_die;
 	int					cursor_num;
