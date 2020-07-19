@@ -46,6 +46,7 @@ int main (int argc, char** argv)
 	printf("Dump: %d.\n", field.dump);
 	//here we get player struct with name of files, reg1 and num of player
 	set_parameters(&field, champions, num);
+	
 	//@TODO: Help function
 	//@TODO: field->last_alive
 	//@TODO: Загнать в минус или зафолсить флаги, которые не будут использоваться (будут ли другие флаги, кроме дампа и номера?)

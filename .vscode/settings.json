@@ -1,6 +1,7 @@
 {
 	"files.associations": {
 		"asm.h": "c",
-		"corewar.h": "c"
+		"corewar.h": "c",
+		"type_traits": "c"
 	}
 }

@@ -2,6 +2,9 @@
 
 # define NUM_ERR 8
 # define ERR_LENGTH 100
+# define OP_CODE_LEN 1
+# define ARGS_CODE_LEN	1
+# define REG_LEN		1
 # include <stdio.h>
 # include "op.h"
 # include "../../libft/includes/libft.h"
@@ -64,6 +67,7 @@ void					put_error(int err_code);
 int						get_dump(int argc, char** argv);
 void					create_player(t_champion** champions, int num, char* str);
 void					set_parameters(t_vm *field, t_champion **champions, int num);
+inline int				get_byte(t_vm *vm, int pc, int step);
 
 
 //debug functions
@@ -73,4 +77,5 @@ void					print_logo();
 void 					intro(t_champion **champions, int num);
 void					execute(t_vm *vm);
 
+int						get_op_arg(t_vm *vm, t_cursor *cursor, int index, int mod);
 #endif
