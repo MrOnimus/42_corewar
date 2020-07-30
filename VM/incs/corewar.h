@@ -5,6 +5,7 @@
 # include <stdio.h>
 # include <stdlib.h>
 # include "op.h"
+# include "libft.h"
 
 typedef struct			s_champion
 {

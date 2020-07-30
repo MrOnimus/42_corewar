@@ -38,7 +38,7 @@ $(NAME): $(addprefix $(OBJD),$(OBJ))
 	@gcc $(FLAGS) $(addprefix $(OBJD), $(OBJ)) $(LIB) $(INCD) -o $(NAME)
 
 clean:
-	@rm -rf obj
+	@rm -rf $(OBJD)
 
 fclean: clean
 	@rm -rf $(NAME)

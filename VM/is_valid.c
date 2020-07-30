@@ -76,13 +76,13 @@ void read_intfield(int fd, int *intfield, size_t size)
 void read_champs(t_champion *champ, char *filename)
 {
 	int fd;
-//	t_header header;
+    //	t_header header;
 
 
 	if (!(fd = open(filename, O_RDONLY)))				//open player file
 		put_error(9);
 
-    read_intfield(fd, &(unsigned int)champ->magic, 4);
+    read_intfield(fd, (unsigned int*)&champ->magic, 4);
 	/*if (!(buff = malloc(4)))							//check magic header
 		put_error(3);
 	read(fd, buff, 4);

@@ -47,15 +47,15 @@ int main (int argc, char** argv)
 	printf("Dump: %d.\n", field.dump);
 	//here we get player struct with name of files, reg1 and num of player
 	set_parameters(&field, champions, num);
-	//@TODO: Help function
-	//@TODO: field->last_alive
-	//@TODO: Загнать в минус или зафолсить флаги, которые не будут использоваться (будут ли другие флаги, кроме дампа и номера?)
+	//TODO: Help function
+	//TODO: field->last_alive
+	//TODO: Загнать в минус или зафолсить флаги, которые не будут использоваться (будут ли другие флаги, кроме дампа и номера?)
 	print_logo();
 	// Инициализация кареток по структуре
 	//in a loop
-	init_cursor(NULL, NULL);//1 champion, place - расположение в памяти. Этой функцией инициализируем все каретки
+	init_cursor(NULL, 0);//1 champion, place - расположение в памяти. Этой функцией инициализируем все каретки
 
-	//@TODO: функция для печати арены в каждый момент времени
+	//TODO: функция для печати арены в каждый момент времени
 
 
 	//Игра продолжается до тех пор пока все каретки не умрут, либо пока количество циклов не достигнет максимума, либо dump
