@@ -11,7 +11,7 @@ typedef struct			s_champion
 {
 	int					number;
 	char				*name;
-	int					filename;
+	char				*filename;
 	char				*comment;
 	int					reg[REG_NUMBER + 1];
 	char				*code;

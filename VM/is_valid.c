@@ -27,11 +27,11 @@ char *convert_field(char *field)
     len = ft_strlen(field);
     i = 0;
     if (!(buff = ft_memalloc(len / 2)))
-        return ;
+        return NULL;
     while (i < len) {
         c = ft_strsub(field, i, 2);
         buff[i/2] = (char)ft_atoi_base(c, 16);
-        ft_strdel(c);
+        ft_strdel(&c);
         i += 2;
     }
     return(buff);
@@ -46,7 +46,7 @@ void read_strfield(int fd, char *strfield, size_t size)
 	read(fd, buff, size);
 	strfield = buff;
     printf("%s\n", strfield);
-    ft_strdel(buff);
+    ft_strdel(&buff);
     printf("%s\n", strfield);
 }
 
@@ -70,7 +70,7 @@ void read_intfield(int fd, int *intfield, size_t size)
 	read(fd, buff, size);
     if (ft_strisnumeric(buff))
 	    *intfield = ft_atoi(convert_field(buff));
-    ft_strdel(buff);
+    ft_strdel(&buff);
 }
 
 void read_champs(t_champion *champ, char *filename)
@@ -82,7 +82,7 @@ void read_champs(t_champion *champ, char *filename)
 	if (!(fd = open(filename, O_RDONLY)))				//open player file
 		put_error(9);
 
-    read_intfield(fd, (unsigned int*)&champ->magic, 4);
+    read_intfield(fd, (int*)&champ->magic, 4);//unsined был
 	/*if (!(buff = malloc(4)))							//check magic header
 		put_error(3);
 	read(fd, buff, 4);

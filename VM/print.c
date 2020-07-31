@@ -5,7 +5,6 @@ void print_players (t_champion		**champions, int num)
 	int i = 0;
 	while (i < num)
 	{
-<<<<<<< HEAD
 		printf("Index i = %d,  Player: %d, name: %s\n", i, champions[i]->number, champions[i]->filename);
 		i++;
 	}
@@ -32,15 +31,9 @@ void intro(t_champion **champions, int num)
 	{
 		ft_printf("* Player %d, weighing %d bytes, \"%s\" (\"%s\") !\n",
 												index,
-												champions[index - 1]->code_size,
+												champions[index - 1]->code_range,
 												champions[index - 1]->name,
 												champions[index - 1]->comment);
 		index++;
 	}
 }
-=======
-		printf("Index i = %d,  Player: %d, filename: %d, name: %s\n", i, champions[i]->number, champions[i]->filename, champions[i]->name);
-		i++;
-	}
-}
->>>>>>> origin/feature/alex/init_arena

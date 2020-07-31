@@ -17,8 +17,8 @@ void		cycle_routine(t_vm *vm)
 {
 	t_cursor *current;
 
-	vm->cycle = vm->cycle++;
-	vm->cycles_after_check = vm->cycles_after_check++;
+	vm->cycle++;
+	vm->cycles_after_check++;
 	current = vm->cursors;
 	while (current)
 	{

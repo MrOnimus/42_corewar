@@ -5,7 +5,7 @@ void create_player(t_champion** champions, int num, char* str)
 	champions[num - 1] = ft_memalloc(sizeof(t_champion));
 	champions[num - 1]->number = num;
 	champions[num - 1]->reg[1] = -num;
-	champions[num - 1]->filename = is_filename(str, ".cor");
+	//champions[num - 1]->filename = is_filename(str, ".cor");
 	champions[num - 1]->name = ft_strsub(str, 0, ft_strlen(str) - 4);
 	/*
 		Here we init all players parameters from file
