@@ -1,24 +1,12 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   ft_strempty.c                                      :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: rdremora <rdremora@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/12/15 15:23:17 by rdremora          #+#    #+#             */
-/*   Updated: 2020/03/10 21:04:16 by rdremora         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "libft.h"
 
-int		ft_strempty(char *s)
+int     ft_strempty(const char *s)  // FIXME: Norminette!!!
 {
-	while (*s)
-	{
-		if (!ft_isspace(*s))
+	int i;
+
+	i = -1;
+	while (++i < (int)ft_strlen(s) + 1)
+		if (*(s + i) != 0)
 			return (0);
-		s++;
-	}
 	return (1);
 }

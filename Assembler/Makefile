@@ -15,28 +15,30 @@ NAME	= ../asm
 FLAGS	= -Wall -Wextra -Werror
 
 LIB		= ../libft/libft.a
-INC		= -I../libft/includes/	-I./inc/
+INCD	= -I../libft/incs/	-I./incs/
 SRC		=	main.c error_msg.c		first_validation.c	translate_to_bin.c		\
 			top_part_of_file.c		s_out.c				reading_instructions.c	\
 			reading_instruments.c	global_variables.c	parse_args.c			\
 			s_tokens.c				s_mark.c			struct_free.c			\
 			translate_to_bytes.c
-			
 
-OBJ_DIR = obj/
+
+OBJD = objs/
 OBJ		= $(patsubst %.c,%.o,$(SRC))
 
 all: $(NAME)
 
-$(OBJ_DIR)%.o: %.c
-	@mkdir -p $(OBJ_DIR)
-	@gcc $(FLAGS) -c $< -o $@ $(INC)
+$(OBJD)%.o: %.c
+	@mkdir -p $(OBJD)
+	@gcc $(FLAGS) -c $< -o $@ $(INCD)
 
-$(NAME): $(addprefix $(OBJ_DIR),$(OBJ))
-	@gcc $(FLAGS) $(addprefix $(OBJ_DIR), $(OBJ)) $(LIB) $(INC) -o $(NAME)
+
+
+$(NAME): $(addprefix $(OBJD),$(OBJ))
+	@gcc $(FLAGS) $(addprefix $(OBJD), $(OBJ)) $(LIB) $(INCD) -o $(NAME)
 
 clean:
-	@rm -rf obj
+	@rm -rf $(OBJD)
 
 fclean: clean
 	@rm -rf $(NAME)

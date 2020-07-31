@@ -54,4 +54,6 @@ dkms.conf
 # Custom
 *.cor
 test.sh
+.vs/
+.vscode/
 asm

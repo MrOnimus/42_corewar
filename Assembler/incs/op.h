@@ -87,7 +87,7 @@ typedef char	t_arg_type;
 typedef struct		s_op
 {
 	unsigned char	cmd[6];
-	unsigned char	arg_q;			  //rename args_quantity
+	unsigned char	arg_q;
 	unsigned char	arg_type[3];
 	unsigned char	opcode;
 	unsigned int	cycles;
