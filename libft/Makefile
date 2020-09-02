@@ -3,10 +3,10 @@
 #														 :::	  ::::::::	#
 #	Makefile										   :+:	  :+:	:+:	#
 #													 +:+ +:+		 +:+	  #
-#	By: immn <immn@student.42.fr>				  +#+  +:+	   +#+		 #
+/*   By: kgarth-o <marvin@42.fr>                    +#+  +:+       +#+        */
 #												 +#+#+#+#+#+   +#+			#
-#	Created: 2019/10/29 12:46:09 by kgarth-o		  #+#	#+#			  #
-#	Updated: 2020/02/03 16:22:02 by immn			 ###   ########.fr		#
+/*   Created: 2020/04/14 13:45:44 by aschimme          #+#    #+#             */
+/*   Updated: 2020/08/10 00:43:15 by kgarth-o         ###   ########.fr       */
 #																			  #
 # **************************************************************************** #
 
@@ -71,7 +71,8 @@ _STR_FS			=	ft_strnstr.c			ft_strcmp.c						ft_strncmp.c			\
 					ft_strlowcase.c			ft_how_mutch_search_in_str.c 	ft_strclen.c			\
 					ft_strjoin_flagclear.c	ft_strjoin_po.c					ft_strnchr.c			\
 					ft_strrev.c				del_str.c						ft_res_is_true.c		\
-					ft_is_num.c				ft_strempty.c					ft_strnempty.c
+					ft_is_num.c				ft_strempty.c					ft_strnempty.c			\
+					ft_is_ok.c
 
 _STACK_FS		=	ft_free_stack.c			ft_pop_stack.c					ft_print_stack.c		\
 					ft_stack_isempty.c 		ft_push_stack.c

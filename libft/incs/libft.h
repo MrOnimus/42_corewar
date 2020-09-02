@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*																			*/
 /*														:::	  ::::::::   */
-/*   libft.h											:+:	  :+:	:+:   */
+/*   libft.h                                            :+:      :+:    :+:   */
 /*													+:+ +:+		 +:+	 */
-/*   By: immn <immn@student.42.fr>				  +#+  +:+	   +#+		*/
+/*   By: oargrave <marvin@42.fr>                    +#+  +:+       +#+        */
 /*												+#+#+#+#+#+   +#+		   */
-/*   Created: 2019/10/29 18:24:30 by kgarth-o		  #+#	#+#			 */
-/*   Updated: 2020/02/03 16:52:28 by immn			 ###   ########.fr	   */
+/*   Created: 2020/02/23 17:08:15 by rdremora          #+#    #+#             */
+/*   Updated: 2020/08/29 03:57:00 by oargrave         ###   ########.fr       */
 /*																			*/
 /* ************************************************************************** */
 
@@ -238,6 +238,7 @@ int					ft_res_is_true(char *s, int (*f)(int));
 int					ft_is_num(char *s);
 int					ft_strnempty(char *s, size_t n);
 void                *ft_memcpy_rev(void *dst, const void *src, size_t n);
+int                 ft_is_ok(char *s, int (*f)(int));
 
 
 /*
