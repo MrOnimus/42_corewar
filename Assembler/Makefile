@@ -8,7 +8,7 @@ SRC		=	main.c error_msg.c		first_validation.c	translate_to_bin.c		\
 			top_part_of_file.c		s_out.c				reading_instructions.c	\
 			reading_instruments.c	global_variables.c	parse_args.c			\
 			s_tokens.c				s_mark.c			struct_free.c			\
-			translate_to_bytes.c
+			translate_to_bytes.c	reading_instruments2.c
 
 
 OBJD = objs/

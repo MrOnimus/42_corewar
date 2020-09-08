@@ -6,7 +6,7 @@
 /*   By: aschimme <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/16 07:34:49 by aschimme          #+#    #+#             */
-/*   Updated: 2020/09/08 21:10:56 by aschimme         ###   ########.fr       */
+/*   Updated: 2020/07/13 21:07:33 by aschimme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,4 +65,18 @@ void		crop_comment(char *line)
 		*p2 = '\0';
 	else if ((p2 > p1 && p1) || !p2)
 		*p1 = '\0';
+}
+
+char		free_two_dim_array(char **me)
+{
+	char **start;
+
+	start = me;
+	while (*me)
+	{
+		free(*me);
+		me++;
+	}
+	free(start);
+	return (1);
 }

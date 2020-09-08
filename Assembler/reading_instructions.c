@@ -6,7 +6,7 @@
 /*   By: rdremora <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/04 15:48:56 by oargrave          #+#    #+#             */
-/*   Updated: 2020/09/08 21:13:08 by aschimme         ###   ########.fr       */
+/*   Updated: 2020/09/08 21:13:08 by rdremora         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ t_op			*cmp_commands(char *l, size_t pos)
 	while (++i < NUMBER_OF_COMMAND)
 		if (ft_strnequ(l, (char *)&(g_op_tab[i].cmd), pos))
 			return (&g_op_tab[i]);
-	printf("!!\n");
 	g_error.id = 10;
 	return (NULL);
 }
