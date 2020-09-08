@@ -1,15 +1,3 @@
-# **************************************************************************** #
-#                                                                              #
-#                                                         :::      ::::::::    #
-#    Makefile                                           :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-/*   By: rdremora <marvin@42.fr>                    +#+  +:+       +#+        */
-#                                                 +#+#+#+#+#+   +#+            #
-/*   Created: 2020/05/06 16:36:58 by wned              #+#    #+#             */
-/*   Updated: 2020/07/14 00:19:19 by rdremora         ###   ########.fr       */
-#                                                                              #
-# **************************************************************************** #
-
 NAME = ../corewar
 
 SRCS = $(wildcard srcs/*.c)
@@ -20,12 +8,26 @@ FLAGS = -Wall -Wextra -Werror
 
 INC = ./includes
 
-LIBRARY = ../libft
+LIBRARY = ../libft/
+
+# COLORS
+RED             =   \033[0;31m
+GREEN           =   \033[0;32m
+YELLOW          =   \033[0;33m
+BLUE            =   \033[0;34m
+PURPLE          =   \033[0;35m
+L_BLUE          =   \033[0;36m
+NC              =   \033[0m
 
 all: $(NAME)
 
-$(NAME): $(OBJS)
+libft: 
+	@make -C ../libft all
+
+$(NAME): libft $(OBJS)
+	@echo "\r\033[K$(GREEN)Creating corewar$(NC): $(YELLOW)$(NAME)$(NC)"
 	@gcc -o $(NAME) $(OBJS) -I $(INC) -L ./$(LIBRARY) -lft
+	@echo "$(GREEN)DONE$(NC)"
 
 objs/%.o: srcs/%.c
 	@mkdir -p objs
@@ -35,10 +37,14 @@ debug:
 	@gcc -g3 -o $(NAME) $(SRCS) -I $(INC) -L ./$(LIBRARY) -lft
 
 clean:
+	@make clean -C ../libft
 	@rm -f $(OBJS)
+	@echo "$(RED)Cleaning$(NC): $(L_BLUE)$(NAME)$(NC)"
 
 fclean: clean
+	@make fclean -C ../libft
 	@rm -f $(NAME)
+	@echo "$(RED)Full cleaning$(NC): $(L_BLUE)$(NAME)$(NC)"
 
 re: fclean all
 
@@ -73,4 +79,4 @@ else
 	$(addprefix ./,$(DEF_NAME)) $(DEF_DUMP_FLAG) $(DUMP) $(CHAMPS) > $(DEF_OUT)
 	diff $(OURS_OUT) $(DEF_OUT)
 endif
-## End Diff ##
+# End Diff ##

@@ -6,20 +6,13 @@
 /*   By: kgarth-o <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/13 00:20:35 by elchrist          #+#    #+#             */
-/*   Updated: 2020/09/08 21:57:43 by aschimme         ###   ########.fr       */
+/*   Updated: 2020/09/08 22:08:36 by aschimme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef COREWAR_H
 # define COREWAR_H
 
-# define BLACK		"\033[30m"
-# define RED        "\033[31m"
-# define GREEN      "\033[32m"
-# define YELLOW     "\033[33m"
-# define BLUE     	"\033[34m"
-# define VIOLET     "\033[35m"
-# define CYAN      	"\033[36m"
 # define NO_COLOR	"\033[m"
 
 # include "../../libft/incs/libft.h"
