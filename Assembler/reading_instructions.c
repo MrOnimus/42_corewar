@@ -6,7 +6,7 @@
 /*   By: rdremora <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/04 15:48:56 by oargrave          #+#    #+#             */
-/*   Updated: 2020/08/10 08:02:37 by rdremora         ###   ########.fr       */
+/*   Updated: 2020/09/08 21:13:08 by aschimme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,16 +36,8 @@ t_tokens		*parse_line(char *line)
 	skip_emptyness(&line);
 	if (*line == COMMENT_CHAR || *line == ALT_COMMENT_CHAR || !*line)
 		return (NULL);
-	/*feedback - marker of separator
-		1 - :
-		2 - %
-		3 - ,
-		0 - prblm
-	*/
 	if (!(feedback = find_sep(line, &pos)) || (feedback == 3))
-	{
 		return ((g_error.id = 10) ? NULL : NULL);
-	}
 	if (!(new = ft_memalloc(sizeof(t_tokens))))
 		return ((g_error.id = 20) ? NULL : NULL);
 	if (feedback == 1)
@@ -53,7 +45,7 @@ t_tokens		*parse_line(char *line)
 		new->mark = ft_strsub(line, 0, pos);
 		line += pos + 1;
 		skip_emptyness(&line);
-		if ((feedback = find_sep(line, &pos)) == 0)//for lable
+		if ((feedback = find_sep(line, &pos)) == 0)
 			return (new);
 		if (feedback != 2)
 			return (free_return(new));
@@ -75,7 +67,7 @@ static t_tokens	*validate(int fd)
 	curr = NULL;
 	while (get_next_line(fd, &line))
 	{
-		if ((new = parse_line(line))) //TODO: Протестировать функцию parse_line
+		if ((new = parse_line(line)))
 			add_tok(&toks, &curr, new);
 		if (g_error.id && (g_error.str_er = line))
 		{
@@ -88,7 +80,7 @@ static t_tokens	*validate(int fd)
 	if (curr)
 		curr->next = NULL;
 	if (!toks && (g_error.id = 19))
-		return (NULL);	// TODO: Надо бы попринтить токены, чтобы быть уверенным.
+		return (NULL);
 	return (toks);
 }
 
@@ -98,17 +90,17 @@ int				read_instructions(int fd, t_out *out)
 	char		status;
 	t_mark		*mark;
 
-	if (!(read = validate(fd)))//token chain
+	if (!(read = validate(fd)))
 		return (1);
 	status = 0;
 	mark = fill_mark(read, status);
-	if (status == 1)// TODO: Эта часть кода не отработает. Нцужно передавать указатель - Передалать надо бэ
+	if (status == 1)
 	{
 		del_marks(mark);
 		del_tokens(read);
 		return (1);
 	}
-	read = del_empty(read);//Получили лист с валидными командами и их параметрами
+	read = del_empty(read);
 	out->code_size_int = move_marks(read, mark);
 	code_to_bytes(read, out);
 	out->c_exist = 1;

@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   parse_args.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rdremora <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: kgarth-o <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/24 07:15:06 by kgarth-o          #+#    #+#             */
-/*   Updated: 2020/08/04 01:07:51 by rdremora         ###   ########.fr       */
+/*   Updated: 2020/09/08 21:15:04 by aschimme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
 
-void		free_bad_args(t_tokens *new, int n_arg, char **args)
+void			free_bad_args(t_tokens *new, int n_arg, char **args)
 {
 	if (args[0] && !args[0][0])
 	{

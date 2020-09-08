@@ -5,14 +5,14 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: rdremora <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/01/02 06:27:06 by oargrave          #+#    #+#             */
-/*   Updated: 2020/07/16 14:52:48 by rdremora         ###   ########.fr       */
+/*   Created: 2020/01/02 06:27:06 by rdremora          #+#    #+#             */
+/*   Updated: 2020/09/08 21:17:31 by aschimme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
 
-void					to_file(t_out *output, char *filename)
+void		to_file(t_out *output, char *filename)
 {
 	int	fd;
 
@@ -28,7 +28,7 @@ void					to_file(t_out *output, char *filename)
 	close(fd);
 }
 
-void	write_magic(t_out *out)
+void		write_magic(t_out *out)
 {
 	char	*cast;
 	int		value;
@@ -62,7 +62,7 @@ void		translation(int fd, t_out **out, char *filename)
 {
 	t_out	*output;
 
-	if (nl_in_eof(fd))//check ONE new_line in eof
+	if (nl_in_eof(fd))
 		return ;
 	if (!(output = ft_memalloc(sizeof(t_out))))
 	{

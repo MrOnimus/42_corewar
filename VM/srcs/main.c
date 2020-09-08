@@ -6,7 +6,7 @@
 /*   By: kgarth-o <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/13 04:06:17 by wned              #+#    #+#             */
-/*   Updated: 2020/07/23 05:20:25 by kgarth-o         ###   ########.fr       */
+/*   Updated: 2020/09/08 21:43:33 by aschimme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,6 @@ int			main(int argc, char **argv)
 {
 	t_rules			rules;
 	t_champion		**champions;
-	//t_champion		*cursors;
 
 	champions = ft_memalloc(sizeof(t_champion*) * 5);
 	ft_memset(&rules, 0, sizeof(t_rules));
@@ -103,6 +102,5 @@ int			main(int argc, char **argv)
 	else
 		error_msg(PRINT_USAGE);
 	create_battlefield(&rules, champions);
-	//cursors = create_cursor(champions, &rules);
 	start_game(&rules, champions);
 }

@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   asm.h                                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: aschimme <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/09/08 21:19:37 by aschimme          #+#    #+#             */
+/*   Updated: 2020/09/08 21:20:24 by aschimme         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef ASM_H
 # define ASM_H
 
@@ -37,7 +49,7 @@ typedef struct	s_t {
 	char		*a1;
 	char		*a2;
 	char		*a3;
-}				t_tokens;//instructions
+}				t_tokens;
 
 typedef	struct	s_m
 {
@@ -74,7 +86,5 @@ void			skip_emptyness(char **p);
 int				check_for_comment(char *line);
 void			crop_comment(char *line);
 void			code_to_bytes(t_tokens *tokens, t_out *out);
-
-
 
 #endif

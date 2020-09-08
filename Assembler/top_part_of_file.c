@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: kgarth-o <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/03/27 02:28:02 by aschimme          #+#    #+#             */
-/*   Updated: 2020/07/21 07:00:53 by kgarth-o         ###   ########.fr       */
+/*   Created: 2020/03/27 02:28:02 by kgarth-o          #+#    #+#             */
+/*   Updated: 2020/09/08 21:16:28 by aschimme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,12 +101,6 @@ void		get_name_n_comment(int fd, t_out *out)
 		while (get_next_line(fd, &line) && (!*line || *line == COMMENT_CHAR
 					|| *line == ALT_COMMENT_CHAR))
 			ft_memdel((void**)&line);
-		/*	TODO:
-			Отсутствуют чеки на дабл имя/коммент
-			Думаю, что надо, чтобы цикл чекал, чтобы в начале файла были либо пустые строки, либо строки начинающиеся на "."
-
-			Пока что оставляю так как было в оригинале
-		*/
 		tmp = ft_strtrim(line);
 		if (preread_dotval(fd, out, tmp) == 1)
 			;

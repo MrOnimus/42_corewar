@@ -6,13 +6,13 @@
 /*   By: aschimme <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/27 23:20:44 by rdremora          #+#    #+#             */
-/*   Updated: 2020/07/10 23:18:22 by aschimme         ###   ########.fr       */
+/*   Updated: 2020/09/08 21:12:42 by aschimme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
 
-size_t		move_marks(t_tokens *read, t_mark *mark)
+size_t			move_marks(t_tokens *read, t_mark *mark)
 {
 	size_t	n;
 
@@ -40,7 +40,7 @@ size_t		move_marks(t_tokens *read, t_mark *mark)
 	return (n);
 }
 
-int			mark_position(char *name, t_mark *marks)
+int				mark_position(char *name, t_mark *marks)
 {
 	int	pos;
 
@@ -93,7 +93,7 @@ size_t			weight(t_tokens *me)
 	return (n);
 }
 
-t_mark		*fill_mark(t_tokens *read, char status)
+t_mark			*fill_mark(t_tokens *read, char status)
 {
 	size_t	n;
 	t_mark	*mark;
@@ -114,7 +114,7 @@ t_mark		*fill_mark(t_tokens *read, char status)
 			mark = start;
 		}
 		else if (read->mark && (g_error.id = 15) &&
-		(g_error.str_er = read->mark) && (status = 1))
+				(g_error.str_er = read->mark) && (status == 1))
 			return (NULL);
 		n += weight(read);
 		read = read->next;

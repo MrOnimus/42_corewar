@@ -6,13 +6,13 @@
 /*   By: aschimme <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/16 07:34:49 by aschimme          #+#    #+#             */
-/*   Updated: 2020/07/13 21:07:33 by aschimme         ###   ########.fr       */
+/*   Updated: 2020/09/08 21:10:56 by aschimme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
 
-void	skip_emptyness(char **p)
+void		skip_emptyness(char **p)
 {
 	while (**p == '\t' || **p == '\v' || **p == '\r' || **p == '\f' || \
 			**p == ' ')
@@ -32,7 +32,6 @@ char		find_sep(char *l, size_t *p)
 		return (2);
 	if (l[*p] == SEPARATOR_CHAR)
 		return (3);
-
 	return (0);
 }
 
@@ -66,27 +65,4 @@ void		crop_comment(char *line)
 		*p2 = '\0';
 	else if ((p2 > p1 && p1) || !p2)
 		*p1 = '\0';
-}
-
-char			free_two_dim_array(char **me)
-{
-	char **start;
-
-	start = me;
-	while (*me)
-	{
-		free(*me);
-		me++;
-	}
-	free(start);
-	return (1);
-}
-
-char			label_correct(char *l)
-{
-	while (*l && ft_strchr(LABEL_CHARS, *l))
-		l++;
-	if (*l)
-		return (0);
-	return (1);
 }

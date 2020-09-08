@@ -1,16 +1,24 @@
 /* ************************************************************************** */
-/*																			*/
-/*														:::	  ::::::::   */
-/*   main.c											 :+:	  :+:	:+:   */
-/*													+:+ +:+		 +:+	 */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
 /*   By: kgarth-o <marvin@42.fr>                    +#+  +:+       +#+        */
-/*												+#+#+#+#+#+   +#+		   */
+/*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/26 22:42:35 by kgarth-o          #+#    #+#             */
-/*   Updated: 2020/07/11 20:19:17 by kgarth-o         ###   ########.fr       */
-/*																			*/
+/*   Updated: 2020/09/08 21:10:29 by aschimme         ###   ########.fr       */
+/*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
+
+void		message(int id, char *file_name)
+{
+	if (id)
+		fail_msg(file_name);
+	else
+		success_msg(file_name);
+}
 
 int			main(int ac, char **av)
 {
@@ -35,10 +43,7 @@ int			main(int ac, char **av)
 			translation(fd, &out, file_name);
 			close(fd);
 		}
-		if (g_error.id)
-			fail_msg(file_name);
-		else
-			success_msg(file_name);
+		message(g_error.id, file_name);
 	}
 	return (0);
 }

@@ -6,19 +6,23 @@
 /*   By: rdremora <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/16 18:46:49 by elchrist          #+#    #+#             */
-/*   Updated: 2020/08/23 04:06:49 by rdremora         ###   ########.fr       */
+/*   Updated: 2020/09/08 21:54:58 by aschimme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "commands.h"
 
+/*
+**остатки от live_func
+**unsigned char	*dummy;
+**dummy = args_types;
+*/
+
 void	live_func(t_rules *rules, t_champion *cursor, unsigned char *args_types)
 {
 	int				val;
-	//unsigned char	*dummy;
 
-	//dummy = args_types;
-    (void)args_types;
+	(void)args_types;
 	val = -(int)get_value_from_battlefield(rules, cursor->position + OP_SIZE,
 		g_op_tab[cursor->code_operation].dir_size);
 	if (val > 0 && val <= rules->much_players)

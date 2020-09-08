@@ -5,14 +5,14 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: rdremora <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/01/13 10:25:33 by aschimme          #+#    #+#             */
-/*   Updated: 2020/07/14 08:44:16 by rdremora         ###   ########.fr       */
+/*   Created: 2020/01/13 10:25:33 by rdremora          #+#    #+#             */
+/*   Updated: 2020/09/08 21:19:18 by aschimme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
 
-void	del_tokens(t_tokens *me)
+void		del_tokens(t_tokens *me)
 {
 	t_tokens	*tmp;
 
@@ -48,7 +48,7 @@ void		add_tok(t_tokens **toks, t_tokens **curr, t_tokens *new)
 	}
 }
 
-t_tokens		*del_empty(t_tokens *read)
+t_tokens	*del_empty(t_tokens *read)
 {
 	t_tokens	*tmp;
 	t_tokens	*new;

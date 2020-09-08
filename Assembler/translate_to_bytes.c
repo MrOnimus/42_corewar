@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: kgarth-o <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/03/03 04:21:24 by aschimme          #+#    #+#             */
-/*   Updated: 2020/08/20 03:06:15 by kgarth-o         ###   ########.fr       */
+/*   Created: 2020/03/03 04:21:24 by kgarth-o          #+#    #+#             */
+/*   Updated: 2020/09/08 21:18:06 by aschimme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,11 +32,6 @@ static void				args_circle(t_tokens *tokens, t_out *out, int *i)
 			}
 			*i += 2;
 		}
-		// else if (tokens->types[j] == 4)
-		// {
-		// 	ft_memcpy_rev(&(out->code[*i]), &(tokens->values[j]), 2);
-		// 	*i += 2;
-		// }
 		j++;
 	}
 }
@@ -62,7 +57,8 @@ static unsigned char	typecode(t_tokens *tokens)
 	a = the_code(tokens->types[0]);
 	b = the_code(tokens->types[1]);
 	c = the_code(tokens->types[2]);
-	res = 0 | ((a << 6) & IIOOOOOO) | ((b << 4) & OOIIOOOO) | ((c << 2) & OOOOIIOO);
+	res = 0 | ((a << 6) & IIOOOOOO) |
+		((b << 4) & OOIIOOOO) | ((c << 2) & OOOOIIOO);
 	return (res);
 }
 
