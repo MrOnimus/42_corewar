@@ -125,58 +125,58 @@ $(NAME): $(OBJB)
 	@ranlib $(NAME)
 	@echo "$(GREEN)DONE$(NC)"
 
-$(OBJD)%.o : $(SRCD)ft_math/%.c $(INCLUDES) Makefile
-	@printf "\r\033[K$(CGREEN)Compiling$(NC): $<"
+$(OBJD)%.o : $(SRCD)ft_math/%.c $(INCLUDES)
+	@printf "\r\033[K$(GREEN)Compiling$(NC): $<"
 	@mkdir -p $(OBJD)
 	@$(CC) $(CFLAGS) -o $@ -c $< -I$(INCD)
 
-$(OBJD)%.o : $(SRCD)ft_btree/%.c $(INCLUDES) Makefile
-	@printf "\r\033[K$(CGREEN)Compiling$(NC): $<"
+$(OBJD)%.o : $(SRCD)ft_btree/%.c $(INCLUDES)
+	@printf "\r\033[K$(GREEN)Compiling$(NC): $<"
 	@mkdir -p $(OBJD)
 	@$(CC) $(CFLAGS) -o $@ -c $< -I$(INCD)
 
-$(OBJD)%.o : $(SRCD)ft_types/%.c $(INCLUDES) Makefile
-	@printf "\r\033[K$(CGREEN)Compiling$(NC): $<"
+$(OBJD)%.o : $(SRCD)ft_types/%.c $(INCLUDES)
+	@printf "\r\033[K$(GREEN)Compiling$(NC): $<"
 	@mkdir -p $(OBJD)
 	@$(CC) $(CFLAGS) -o $@ -c $< -I$(INCD)
 
-$(OBJD)%.o : $(SRCD)ft_list/%.c $(INCLUDES) Makefile
-	@printf "\r\033[K$(CGREEN)Compiling$(NC): $<"
+$(OBJD)%.o : $(SRCD)ft_list/%.c $(INCLUDES)
+	@printf "\r\033[K$(GREEN)Compiling$(NC): $<"
 	@mkdir -p $(OBJD)
 	@$(CC) $(CFLAGS) -o $@ -c $< -I$(INCD)
 
-$(OBJD)%.o : $(SRCD)ft_stack/%.c $(INCLUDES) Makefile
-	@printf "\r\033[K$(CGREEN)Compiling$(NC): $<"
+$(OBJD)%.o : $(SRCD)ft_stack/%.c $(INCLUDES)
+	@printf "\r\033[K$(GREEN)Compiling$(NC): $<"
 	@mkdir -p $(OBJD)
 	@$(CC) $(CFLAGS) -o $@ -c $< -I$(INCD)
 
-$(OBJD)%.o : $(SRCD)ft_mem/%.c $(INCLUDES) Makefile
-	@printf "\r\033[K$(CGREEN)Compiling$(NC): $<"
+$(OBJD)%.o : $(SRCD)ft_mem/%.c $(INCLUDES)
+	@printf "\r\033[K$(GREEN)Compiling$(NC): $<"
 	@mkdir -p $(OBJD)
 	@$(CC) $(CFLAGS) -o $@ -c $< -I$(INCD)
 
-$(OBJD)%.o: $(SRCD)ft_io/%.c $(INCLUDES) Makefile
-	@printf "\r\033[K$(CGREEN)Compiling$(NC): $<"
+$(OBJD)%.o : $(SRCD)ft_io/%.c $(INCLUDES)
+	@printf "\r\033[K$(GREEN)Compiling$(NC): $<"
 	@mkdir -p $(OBJD)
 	@$(CC) $(CFLAGS) -o $@ -c $< -I$(INCD)
 
-$(OBJD)%.o: $(SRCD)ft_str/%.c $(INCLUDES) Makefile
-	@printf "\r\033[K$(CGREEN)Compiling$(NC): $<"
+$(OBJD)%.o : $(SRCD)ft_str/%.c $(INCLUDES)
+	@printf "\r\033[K$(GREEN)Compiling$(NC): $<"
 	@mkdir -p $(OBJD)
 	@$(CC) $(CFLAGS) -o $@ -c $< -I$(INCD)
 
-$(OBJD)%.o: $(SRCD)ft_printf/%.c $(INCLUDES) Makefile
-	@printf "\r\033[K$(CGREEN)Compiling$(NC): $<"
+$(OBJD)%.o : $(SRCD)ft_printf/%.c $(INCLUDES)
+	@printf "\r\033[K$(GREEN)Compiling$(NC): $<"
 	@mkdir -p $(OBJD)
 	@$(CC) $(CFLAGS) -o $@ -c $< -I$(INCD)
 
-$(OBJD)%.o: $(SRCD)ft_arr/%.c $(INCLUDES) Makefile
-	@printf "\r\033[K$(CGREEN)Compiling$(NC): $<"
+$(OBJD)%.o : $(SRCD)ft_arr/%.c $(INCLUDES)
+	@printf "\r\033[K$(GREEN)Compiling$(NC): $<"
 	@mkdir -p $(OBJD)
 	@$(CC) $(CFLAGS) -o $@ -c $< -I$(INCD)
 
-$(OBJD)%.o: $(SRCD)math/%.c $(INCLUDES) Makefile
-	@printf "\r\033[K$(CGREEN)Compiling$(NC): $<"
+$(OBJD)%.o : $(SRCD)math/%.c $(INCLUDES)
+	@printf "\r\033[K$(GREEN)Compiling$(NC): $<"
 	@mkdir -p $(OBJD)
 	@$(CC) $(CFLAGS) -o $@ -c $< -I$(INCD)
 clean:
