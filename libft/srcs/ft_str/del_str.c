@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   del_str.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kgarth-o <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: rdremora <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/05/02 20:21:07 by kgarth-o          #+#    #+#             */
-/*   Updated: 2020/07/30 10:03:58 by kgarth-o         ###   ########.fr       */
+/*   Created: 2020/05/02 20:21:07 by rdremora          #+#    #+#             */
+/*   Updated: 2020/09/10 17:52:44 by rdremora         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char			del_str(char **line)
+char	del_str(char **line)
 {
 	if (!line)
 		return (1);
