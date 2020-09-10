@@ -1,3 +1,15 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: aschimme <marvin@42.fr>                    +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2020/09/10 19:15:09 by aschimme          #+#    #+#              #
+#    Updated: 2020/09/10 19:25:00 by aschimme         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
 NAME	= ../asm
 
 FLAGS	= -Wall -Wextra -Werror
@@ -10,6 +22,14 @@ SRC		=	main.c error_msg.c		first_validation.c	translate_to_bin.c		\
 			s_tokens.c				s_mark.c			struct_free.c			\
 			translate_to_bytes.c	reading_instruments2.c
 
+# COLORS
+RED             =   \033[0;31m
+GREEN           =   \033[0;32m
+YELLOW          =   \033[0;33m
+BLUE            =   \033[0;34m
+PURPLE          =   \033[0;35m
+L_BLUE          =   \033[0;36m
+NC              =   \033[0m
 
 OBJD = objs/
 OBJ		= $(patsubst %.c,%.o,$(SRC))
@@ -20,15 +40,23 @@ $(OBJD)%.o: %.c
 	@mkdir -p $(OBJD)
 	@gcc $(FLAGS) -c $< -o $@ $(INCD)
 
+libft:
+	@make -C ../libft all
 
-
-$(NAME): $(addprefix $(OBJD),$(OBJ))
+$(NAME): libft $(addprefix $(OBJD),$(OBJ))
+	@echo "\r\033[K$(GREEN)Creating assembler$(NC): $(YELLOW)$(NAME)$(NC)"
 	@gcc $(FLAGS) $(addprefix $(OBJD), $(OBJ)) $(LIB) $(INCD) -o $(NAME)
+	@echo "$(GREEN)DONE$(NC)"
+
 
 clean:
+	@make clean -C ../libft
 	@rm -rf $(OBJD)
+	@echo "$(RED)Cleaning$(NC): $(L_BLUE)$(NAME)$(NC)"
 
 fclean: clean
+	@make fclean -C ../libft
 	@rm -rf $(NAME)
+	@echo "$(RED)Full cleaning$(NC): $(L_BLUE)$(NAME)$(NC)"
 
 re: fclean all
