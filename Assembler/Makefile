@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: aschimme <marvin@42.fr>                    +#+  +:+       +#+         #
+#    By: rdremora <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/09/10 19:15:09 by aschimme          #+#    #+#              #
-#    Updated: 2020/09/10 19:25:00 by aschimme         ###   ########.fr        #
+#    Updated: 2020/09/11 00:05:54 by rdremora         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -41,7 +41,7 @@ $(OBJD)%.o: %.c
 	@gcc $(FLAGS) -c $< -o $@ $(INCD)
 
 libft:
-	@make -C ../libft all
+	@make -s -C ../libft all
 
 $(NAME): libft $(addprefix $(OBJD),$(OBJ))
 	@echo "\r\033[K$(GREEN)Creating assembler$(NC): $(YELLOW)$(NAME)$(NC)"
@@ -50,12 +50,12 @@ $(NAME): libft $(addprefix $(OBJD),$(OBJ))
 
 
 clean:
-	@make clean -C ../libft
+	@make -s -C ../libft clean
 	@rm -rf $(OBJD)
 	@echo "$(RED)Cleaning$(NC): $(L_BLUE)$(NAME)$(NC)"
 
 fclean: clean
-	@make fclean -C ../libft
+	@make -s -C ../libft fclean
 	@rm -rf $(NAME)
 	@echo "$(RED)Full cleaning$(NC): $(L_BLUE)$(NAME)$(NC)"
 

@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: aschimme <marvin@42.fr>                    +#+  +:+       +#+         #
+#    By: rdremora <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/09/10 19:11:03 by aschimme          #+#    #+#              #
-#    Updated: 2020/09/10 19:14:50 by aschimme         ###   ########.fr        #
+#    Updated: 2020/09/11 00:06:20 by rdremora         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,7 +34,7 @@ NC              =   \033[0m
 all: $(NAME)
 
 libft: 
-	@make -C ../libft all
+	@make -s -C ../libft all
 
 $(NAME): libft $(OBJS)
 	@echo "\r\033[K$(GREEN)Creating corewar$(NC): $(YELLOW)$(NAME)$(NC)"
@@ -49,12 +49,12 @@ debug:
 	@gcc -g3 -o $(NAME) $(SRCS) -I $(INC) -L ./$(LIBRARY) -lft
 
 clean:
-	@make clean -C ../libft
+	@make -s -C ../libft clean
 	@rm -f $(OBJS)
 	@echo "$(RED)Cleaning$(NC): $(L_BLUE)$(NAME)$(NC)"
 
 fclean: clean
-	@make fclean -C ../libft
+	@make -s -C ../libft fclean 
 	@rm -f $(NAME)
 	@echo "$(RED)Full cleaning$(NC): $(L_BLUE)$(NAME)$(NC)"
 
