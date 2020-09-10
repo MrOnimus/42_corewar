@@ -33,8 +33,7 @@ void	clean_memory(t_champion **cursors)
 		free(*cursors);
 }
 
-void	end_game(int reason, t_rules *rules,
-t_champion *cursors, t_champion **champions)
+void	end_game(int reason, t_rules *rules, t_champion **champions)
 {
 	if (reason == PRINTING_DUMP)
 		print_dump(rules);
@@ -45,7 +44,6 @@ t_champion *cursors, t_champion **champions)
 		exit(0);
 	}
 	clean_memory(champions);
-	clean_memory(&cursors);
 	del_str(&(rules->name_winner));
 	exit(0);
 }

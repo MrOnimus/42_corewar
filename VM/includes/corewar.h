@@ -120,7 +120,7 @@ void					free_cursor(t_champion **cursor);
 int						get_arg(t_rules *rules, t_champion *cursor,
 							unsigned char *t_args, int num_arg);
 void					end_game(int reason, t_rules *rules,
-							t_champion *cursors, t_champion **champions);
+							t_champion **champions);
 int						valid_n_flags(int argc, char **argv,
 							t_champion **champions, t_rules *rules);
 

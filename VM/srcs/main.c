@@ -103,5 +103,4 @@ int			main(int argc, char **argv)
 		error_msg(PRINT_USAGE);
 	create_battlefield(&rules, champions);
 	start_game(&rules, champions);
-	exit(0);
 }
