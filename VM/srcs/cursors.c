@@ -6,7 +6,7 @@
 /*   By: rdremora <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/09 18:08:21 by rdremora          #+#    #+#             */
-/*   Updated: 2020/09/16 20:48:17 by rdremora         ###   ########.fr       */
+/*   Updated: 2020/09/16 21:33:44 by rdremora         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ t_champion	*add_cursor_in_start(t_champion *cursors,
 	return (cursors);
 }
 
-void        create_cursor(t_champion **champions, t_rules *rules)
+void		create_cursor(t_champion **champions, t_rules *rules)
 {
 	int			current_champion;
 	int			count;

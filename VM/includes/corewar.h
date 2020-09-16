@@ -6,7 +6,7 @@
 /*   By: rdremora <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/13 00:20:35 by aschimme          #+#    #+#             */
-/*   Updated: 2020/09/10 18:30:29 by rdremora         ###   ########.fr       */
+/*   Updated: 2020/09/16 21:34:19 by rdremora         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,7 @@ void					print_battlefiled(t_rules *rules,
 							t_champion **champions);
 int						select_champion(t_champion **champions,
 							int current_champion);
-void    				create_cursor(t_champion **champions, t_rules *rules);
+void					create_cursor(t_champion **champions, t_rules *rules);
 void					print_cursors(t_champion *cursor, char flag_body);
 void					to_string(t_champion *cursors, char flag_body);
 
