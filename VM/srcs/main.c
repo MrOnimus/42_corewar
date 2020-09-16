@@ -6,7 +6,7 @@
 /*   By: rdremora <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/13 04:06:17 by rdremora          #+#    #+#             */
-/*   Updated: 2020/09/10 18:27:37 by rdremora         ###   ########.fr       */
+/*   Updated: 2020/09/16 20:48:49 by rdremora         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,5 +102,6 @@ int			main(int argc, char **argv)
 	else
 		error_msg(PRINT_USAGE);
 	create_battlefield(&rules, champions);
+	create_cursor(champions, &rules);
 	start_game(&rules, champions);
 }

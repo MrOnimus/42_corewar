@@ -92,7 +92,7 @@ void					print_battlefiled(t_rules *rules,
 							t_champion **champions);
 int						select_champion(t_champion **champions,
 							int current_champion);
-t_champion				*create_cursor(t_champion **champions, t_rules *rules);
+void    				create_cursor(t_champion **champions, t_rules *rules);
 void					print_cursors(t_champion *cursor, char flag_body);
 void					to_string(t_champion *cursors, char flag_body);
 
@@ -120,7 +120,7 @@ void					free_cursor(t_champion **cursor);
 int						get_arg(t_rules *rules, t_champion *cursor,
 							unsigned char *t_args, int num_arg);
 void					end_game(int reason, t_rules *rules,
-							t_champion **champions);
+							t_champion *cursors);
 int						valid_n_flags(int argc, char **argv,
 							t_champion **champions, t_rules *rules);
 
